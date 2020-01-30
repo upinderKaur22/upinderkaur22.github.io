@@ -16,7 +16,7 @@ Because of the previous reasons, an improved first-order central-upwind was chos
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables $q$ as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math="> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
 
 <div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" title="example image"/>
+    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" width="50%" title="example image"/>
 </div>
 <div class="col three caption">
     Main variables of the method.
