@@ -12,42 +12,22 @@ In general, method that solves the SWE must fulfill both the well-balanced prope
 
 Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see \cite{Bryson_1}, which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level \cite{Bryson_2}, employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
-## Model Definition
+### Model Definition.
+
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables <img src="https://render.githubusercontent.com/render/math?math=q"> as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q}"> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
 
 <div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" width="150px" title="example image"/>
+    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" height="150" title="example image"/>
 </div>
 <div class="col three caption">
-    Main variables of the method.
+    Main (state) variables used to describe the shallow water equations (SWE).
 </div>
 
-It worthwhile to define the following variables depicted in figure(\ref{fig:Fig001}): 
+where in the figure <img src="https://render.githubusercontent.com/render/math?math=w(x,y,t)"> Represents the surface elevation. It is measured from mean sea level to the water level, <img src="https://render.githubusercontent.com/render/math?math=h(x,y,t)"> Represents the water depth. It is measured from the bed elevation to the water surface,  <img src="https://render.githubusercontent.com/render/math?math=u(x,y,t)"> Represents the velocity field along x-direction, <img src="https://render.githubusercontent.com/render/math?math=v(x,y,t)">  Represents the velocity field along $y$-direction, and <img src="https://render.githubusercontent.com/render/math?math=B(x,y)"> Represents the bathymetry. It is measured from the mean sea level to the bottom floor. Note that the associated variables  <img src="https://render.githubusercontent.com/render/math?math=hu(x,y,t)"> and <img src="https://render.githubusercontent.com/render/math?math=hv(x,y,t)"> Represents the flux-discharge along x and y direction respectively.
 
-\begin{itemize}
- \item $w(x,y,t)$ : Represents the surface elevation. It is measured from mean sea level to the water level.`
- \item $h(x,y,t)$ : Represents the water depth. It is measured from the bed elevation to the water surface. 
- \item $u(x,y,t)$ : Represents the velocity field along $x$-direction.
- \item $v(x,y,t)$ : Represents the velocity field along $y$-direction.
- \item $B(x,y)$   : Represents the bathymetry. It is measured from the mean sea level to the bottom floor. 
-\end{itemize}\
+### The Shallow Water Equations.
 
-There are other associated variables that results mandatory to highlight: 
-
-\begin{itemize}
- \item $hu(x,y,t)$ : Represents the flux-discharge along $x$-direction, [$m^2/s$].
- \item $hv(x,y,t)$ : Represents the flux-discharge along $y$-direction, [$m^2/s$].
-\end{itemize}
-
-## The Shallow Water Equations
-
-Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. A system of bi-dimensional equations is obtained, where the horizontal velocities are an average of the velocity along the water column.Neglecting the kinematic and turbulent terms, the SWE can be written as: 
-
-$$
-h_t + (hu)_x + (hv)_y & = 0  \label{ListForm:1} \\  
-(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    &= -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \label{ListForm:2} \\
-(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  &= -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \label{ListForm:3}
-$$
+Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. In this regard, a system of bi-dimensional equations is obtained, in which the horizontal velocities represents an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 <img src="https://render.githubusercontent.com/render/math?math=h_t %2B (hu)_x %2B (hv)_y = 0">
 
@@ -55,37 +35,40 @@ $$
 
 <img src="https://render.githubusercontent.com/render/math?math=(hv)_t %2B (huv)_x  %2B \left( hv^2 %2B \frac{1}{2} g h^2 \right)_y = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}">
 
-<img src="https://render.githubusercontent.com/render/math?math=...">
+The first equation represent the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. The second and third equations represent the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. 
 
-<img src="https://render.githubusercontent.com/render/math?math=...">
+These set of equations can be written down on its conserved vector form as follows: 
 
-Equation (\ref{ListForm:1}) represents the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. Equations (\ref{ListForm:2}) and (\ref{ListForm:3}) represents the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. 
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t}} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x}} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y}} = \mathbf{S}(\mathbf{q}) %2B \mathbf{S}(\mathbf{q})">
 
-The set of equations(\ref{ListForm:1}), (\ref{ListForm:2}) and (\ref{ListForm:3}) can be written down on its conserved vector form as follows: 
+where the previous variables represents:
 
-\begin{align}\label{VecForm}
-\dt{\q} + \dx{ \f(\q)} + \dy{ \g(\q)} = \S(\q) + \R(\q)
-\end{align}
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = \left[ h,  hu,  hv \right]^top">
 
-Where the previous variables represents:
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{f}(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top">
 
-\begin{align}
-   \q  &= \left[ h,  hu,  hv \right]^T   		    \\ 
-						  \nonumber \\
-\f(\q) &= \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^T    \\
-						  \nonumber \\
-\g(\q) &= \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^T    \\
-						  \nonumber \\
-\S(\q) &= \left[ 0, -gh \dx{\z}, -gh \dy{\z} \right]^T      \\
-						  \nonumber \\
-\R(\q) &= \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^T 
-\end{align}
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^top">
 
-Where, $\S(\q)$: represents the source term, $\R(\q)$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}}, -gh \frac{\partial z}{\partial y}} \right]^T">
 
-## A Finite Volume Discretization
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^top">
+
+where $\mathbf{S}(\mathbf{q})$: represents the source term, $\mathbf{R}(\mathbf{q})$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
+
+### A Finite Volume Discretization.
 
 In order to solve the set of equations presented in (\ref{ListForm:1}), (\ref{ListForm:2}), and (\ref{ListForm:3}) the finite volume method will be employed. First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\q) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form:
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+\frac{\partial #1}{\partial t}}
 
 \begin{align}
 \dt{\q} + \nabla \cdot \overrightarrow{\F}(\q) = \S(\q) + \C(\q) + \R(\q)
@@ -125,7 +108,7 @@ In this regard, the friction and the Coriolis terms can be incorporated correcti
 \q_j^{m+1} = \frac{\q_j^{m+1}}{1 + \Delta t \cdot H(\q_j^{m+1})} 
 \end{align}
 
-## First--Order Semi--Discrete Central Upwind
+### First--Order Semi--Discrete Central Upwind.
 
 In this section, the \emph{First--order semi--discrete central--upwind} method will be employed to solve the discrete form of the Sallow Water Equations presented in equation(\ref{Euler}). In order to get a better understanding of the method, it is a smart idea to use as a reference the scheme depicted in figure (\ref{Fig002}): 
 
