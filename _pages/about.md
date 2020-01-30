@@ -1,21 +1,26 @@
 ---
 layout: about
 permalink: /
-title: <strong>Your</strong> Name
-description: <a href="">Affiliations</a>. Address. Contacts. Moto. Etc.
+title: <strong>Danilo S.</strong> Kusanovic
+description: <a href="https://www.asimaki.caltech.edu/">Asimaki's Group</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
   image: prof_pic.jpg
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>B103 Gate-Thomas</p>
+    <p>1200 E California Blvd</p>
+    <p>Pasadena, CA 91125</p>
 
 news: true
 social: true
 ---
-Soy el potro! Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am Danilo Kusanovic, PhD candidate in the Mechanical and Civil Engineering ([MCE](http://www.mce.caltech.edu/){:target="\_blank"}) department at Caltech. I received my Bachelor's and Master's degree in [Civil Engineering](http://postgrado.usm.cl/en/programas/programas-de-magister/magister-en-ciencias-de-la-ingenieria-civil/){:target="\_blank"} at  Universidad T\'ecnica Federico Santa Mar\'a in Chile, as well as a second master in Analysis and Design of Earthquakes Resistant Structures ([ADERS](http://www.postgrad.structural.civil.ntua.gr/pclab_eng/index_eng.htm){:target="\_blank"}) at the National Technical University of Athens (NTUA in Greece. During my undergraduate and postgraduate thesis I worked in the area of reliability-based optimization for structural systems. Currently I am working as a graduate student under the supervision of Domniki Asimaki. My research focuses on Parameter Identification for Reduced Order Models of Soil-Structure Interaction Based on Ensamble Kalman Inversion. 
+
+
+Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+
+
 
 Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
