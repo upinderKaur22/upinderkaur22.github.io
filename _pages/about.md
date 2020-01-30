@@ -2,7 +2,7 @@
 layout: about
 permalink: /
 title: <strong>Danilo S.</strong> Kusanovic
-description: <a href="https://www.asimaki.caltech.edu/">Asimaki's Group</a>. <a href="https://github.com/dankusanovic">GitHub page</a> <a href="https://www.google.com/maps/place/Caltech,+Gates-Thomas+building/@34.1368233,-118.1241685,18z/data=!4m5!3m4!1s0x80c2c4a7dc55fc89:0xe18c273324110915!8m2!3d34.1371131!4d-118.1245179">Address</a>. 
+description: <a href="https://www.asimaki.caltech.edu/">Asimaki's Group</a>. <a href="https://github.com/dankusanovic">GitHub page</a>. <a href="https://www.google.com/maps/place/Caltech,+Gates-Thomas+building/@34.1368233,-118.1241685,18z/data=!4m5!3m4!1s0x80c2c4a7dc55fc89:0xe18c273324110915!8m2!3d34.1371131!4d-118.1245179">Address</a>. 
 
 profile:
   align: right
@@ -15,7 +15,9 @@ profile:
 news: true
 social: true
 ---
-I am Danilo Kusanovic, a PhD candidate in the Mechanical and Civil Engineering ([MCE](http://www.mce.caltech.edu/){:target="\_blank"}) department at Caltech. I received my Bachelor's and Master's degree in [Civil Engineering](http://postgrado.usm.cl/en/programas/programas-de-magister/magister-en-ciencias-de-la-ingenieria-civil/){:target="\_blank"} at  Universidad Técnica Federico Santa María in Chile, as well as a second master in Analysis and Design of Earthquakes Resistant Structures ([ADERS](http://www.postgrad.structural.civil.ntua.gr/pclab_eng/index_eng.htm){:target="\_blank"}) at the National Technical University of Athens (NTUA) in Greece. During my undergraduate and postgraduate thesis I worked in the area of reliability-based optimization for structural systems. Currently I am working as a graduate student under the supervision of Domniki Asimaki. My research focuses on Parameter Identification for Reduced Order Models of Soil-Structure Interaction Based on Ensamble Kalman Inversion. 
+I am a very enthusiastic, responsible, and dedicated person who enjoys doing reasearc. It is my desire to be exposed to how computer science and mathematical modeling can be combined for solving complex engineering problems. As a result of this desire I am a PhD candidate in the Mechanical and Civil Engineering ([MCE](http://www.mce.caltech.edu/){:target="\_blank"}) department at Caltech. Currently I am working as a graduate student under the supervision of Domniki Asimaki. My research focuses on Parameter Identification for Reduced Order Models of Soil-Structure Interaction Based on Ensamble Kalman Inversion. 
+
+Before coming to Caltech, I received my Bachelor's and Master's degree in [Civil Engineering](http://postgrado.usm.cl/en/programas/programas-de-magister/magister-en-ciencias-de-la-ingenieria-civil/){:target="\_blank"} at  Universidad Técnica Federico Santa María in Chile, as well as a second master in Analysis and Design of Earthquakes Resistant Structures ([ADERS](http://www.postgrad.structural.civil.ntua.gr/pclab_eng/index_eng.htm){:target="\_blank"}) at the National Technical University of Athens (NTUA) in Greece. During my undergraduate and postgraduate thesis I worked in the area of reliability-based optimization for structural systems. 
 
 <!--
 Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
