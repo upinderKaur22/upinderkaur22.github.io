@@ -15,14 +15,12 @@ profile:
 news: true
 social: true
 ---
-I am Danilo Kusanovic, a PhD candidate in the Mechanical and Civil Engineering ([MCE](http://www.mce.caltech.edu/){:target="\_blank"}) department at Caltech. I received my Bachelor's and Master's degree in [Civil Engineering](http://postgrado.usm.cl/en/programas/programas-de-magister/magister-en-ciencias-de-la-ingenieria-civil/){:target="\_blank"} at  Universidad T\'ecnica Federico Santa Mar\'a in Chile, as well as a second master in Analysis and Design of Earthquakes Resistant Structures ([ADERS](http://www.postgrad.structural.civil.ntua.gr/pclab_eng/index_eng.htm){:target="\_blank"}) at the National Technical University of Athens (NTUA) in Greece. During my undergraduate and postgraduate thesis I worked in the area of reliability-based optimization for structural systems. Currently I am working as a graduate student under the supervision of Domniki Asimaki. My research focuses on Parameter Identification for Reduced Order Models of Soil-Structure Interaction Based on Ensamble Kalman Inversion. 
+I am Danilo Kusanovic, a PhD candidate in the Mechanical and Civil Engineering ([MCE](http://www.mce.caltech.edu/){:target="\_blank"}) department at Caltech. I received my Bachelor's and Master's degree in [Civil Engineering](http://postgrado.usm.cl/en/programas/programas-de-magister/magister-en-ciencias-de-la-ingenieria-civil/){:target="\_blank"} at  Universidad Técnica Federico Santa María in Chile, as well as a second master in Analysis and Design of Earthquakes Resistant Structures ([ADERS](http://www.postgrad.structural.civil.ntua.gr/pclab_eng/index_eng.htm){:target="\_blank"}) at the National Technical University of Athens (NTUA) in Greece. During my undergraduate and postgraduate thesis I worked in the area of reliability-based optimization for structural systems. Currently I am working as a graduate student under the supervision of Domniki Asimaki. My research focuses on Parameter Identification for Reduced Order Models of Soil-Structure Interaction Based on Ensamble Kalman Inversion. 
 
-
-
-
-
+<!--
 Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
 Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/){:target="\_blank"} and [Academicons](https://jpswalsh.github.io/academicons/){:target="\_blank"}, like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+--> 
