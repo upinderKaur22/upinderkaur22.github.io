@@ -12,7 +12,7 @@ In general, method that solves the SWE must fulfill both the well-balanced prope
 
 Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see \cite{Bryson_1}, which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level \cite{Bryson_2}, employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
-# Model Definition
+## Model Definition
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables $q$ as scalar, while in bold $\mathbf{q}$ as vectors, i.e., we will have $\mathbf{q} = (q_1, q_2, q_3)^T$ as a vector of conserved 
 variables. 
 
@@ -40,30 +40,26 @@ There are other associated variables that results mandatory to highlight:
  \item $hv(x,y,t)$ : Represents the flux-discharge along $y$-direction, [$m^2/s$].
 \end{itemize}
 
-# The Shallow Water Equations
+## The Shallow Water Equations
 
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. A system of bi-dimensional equations is obtained, where the horizontal velocities are an average of the velocity along the water column.Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 $$
-\begin{align}
 h_t + (hu)_x + (hv)_y & = 0  \label{ListForm:1} \\  
 (hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    &= -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \label{ListForm:2} \\
 (hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  &= -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \label{ListForm:3}
-\end{align}
 $$
 
 Equation (\ref{ListForm:1}) represents the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. Equations (\ref{ListForm:2}) and (\ref{ListForm:3}) represents the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. 
 
 The set of equations(\ref{ListForm:1}), (\ref{ListForm:2}) and (\ref{ListForm:3}) can be written down on its conserved vector form as follows: 
 
-$$
 \begin{align}\label{VecForm}
 \dt{\q} + \dx{ \f(\q)} + \dy{ \g(\q)} = \S(\q) + \R(\q)
 \end{align}
-$$
 
 Where the previous variables represents:
-$$
+
 \begin{align}
    \q  &= \left[ h,  hu,  hv \right]^T   		    \\ 
 						  \nonumber \\
@@ -75,11 +71,10 @@ $$
 						  \nonumber \\
 \R(\q) &= \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^T 
 \end{align}
-$$
 
 Where, $\S(\q)$: represents the source term, $\R(\q)$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
 
-# A Finite Volume Discretization
+## A Finite Volume Discretization
 
 In order to solve the set of equations presented in (\ref{ListForm:1}), (\ref{ListForm:2}), and (\ref{ListForm:3}) the finite volume method will be employed. First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\q) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form:
 
@@ -121,7 +116,7 @@ In this regard, the friction and the Coriolis terms can be incorporated correcti
 \q_j^{m+1} = \frac{\q_j^{m+1}}{1 + \Delta t \cdot H(\q_j^{m+1})} 
 \end{align}
 
-# First--Order Semi--Discrete Central Upwind
+## First--Order Semi--Discrete Central Upwind
 
 In this section, the \emph{First--order semi--discrete central--upwind} method will be employed to solve the discrete form of the Sallow Water Equations presented in equation(\ref{Euler}). In order to get a better understanding of the method, it is a smart idea to use as a reference the scheme depicted in figure (\ref{Fig002}): 
 
