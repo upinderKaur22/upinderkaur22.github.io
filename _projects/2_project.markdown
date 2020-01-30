@@ -13,10 +13,10 @@ In general, method that solves the SWE must fulfill both the well-balanced prope
 Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see \cite{Bryson_1}, which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level \cite{Bryson_2}, employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
 ## Model Definition
-In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables $q$ as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q}"> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
+In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables <img src="https://render.githubusercontent.com/render/math?math=q"> as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q}"> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
 
 <div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" width="50" title="example image"/>
+    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" width="150px" title="example image"/>
 </div>
 <div class="col three caption">
     Main variables of the method.
