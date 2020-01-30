@@ -50,10 +50,14 @@ h_t + (hu)_x + (hv)_y & = 0  \label{ListForm:1} \\
 (hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  &= -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \label{ListForm:3}
 $$
 
-<img src="https://render.githubusercontent.com/render/math?math=h_t + (hu)_x + (hv)_y = 0">
-<img src="https://render.githubusercontent.com/render/math?math=(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}">
-<img src="https://render.githubusercontent.com/render/math?math=(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}">
+<img src="https://render.githubusercontent.com/render/math?math=h_t %2B (hu)_x %2B (hv)_y = 0">
+
+<img src="https://render.githubusercontent.com/render/math?math=(hu)_t %2B \left(hu^2 %2B \frac{1}{2} g h^2 \right)_x %2B (huv)_y = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}">
+
+<img src="https://render.githubusercontent.com/render/math?math=(hv)_t %2B (huv)_x  %2B \left( hv^2 %2B \frac{1}{2} g h^2 \right)_y = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}">
+
 <img src="https://render.githubusercontent.com/render/math?math=...">
+
 <img src="https://render.githubusercontent.com/render/math?math=...">
 
 Equation (\ref{ListForm:1}) represents the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. Equations (\ref{ListForm:2}) and (\ref{ListForm:3}) represents the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. 
