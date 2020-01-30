@@ -23,7 +23,7 @@ In this section, it will be defined the main variables that are going to be empl
     Main (state) variables used to describe the shallow water equations (SWE).
 </div>
 
-where in the figure <img src="https://render.githubusercontent.com/render/math?math=w(x,y,t)"> Represents the surface elevation. It is measured from mean sea level to the water level, <img src="https://render.githubusercontent.com/render/math?math=h(x,y,t)"> Represents the water depth. It is measured from the bed elevation to the water surface,  <img src="https://render.githubusercontent.com/render/math?math=u(x,y,t)"> Represents the velocity field along x-direction, <img src="https://render.githubusercontent.com/render/math?math=v(x,y,t)">  Represents the velocity field along $y$-direction, and <img src="https://render.githubusercontent.com/render/math?math=B(x,y)"> Represents the bathymetry. It is measured from the mean sea level to the bottom floor. Note that the associated variables  <img src="https://render.githubusercontent.com/render/math?math=hu(x,y,t)"> and <img src="https://render.githubusercontent.com/render/math?math=hv(x,y,t)"> Represents the flux-discharge along x and y direction respectively.
+where in the figure <img src="https://render.githubusercontent.com/render/math?math=w(x,y,t)"> Represents the surface elevation. It is measured from mean sea level to the water level, <img src="https://render.githubusercontent.com/render/math?math=h(x,y,t)"> Represents the water depth. It is measured from the bed elevation to the water surface,  <img src="https://render.githubusercontent.com/render/math?math=u(x,y,t)"> Represents the velocity field along x-direction, <img src="https://render.githubusercontent.com/render/math?math=v(x,y,t)">  Represents the velocity field along y-direction, and <img src="https://render.githubusercontent.com/render/math?math=B(x,y)"> Represents the bathymetry. It is measured from the mean sea level to the bottom floor. Note that the associated variables  <img src="https://render.githubusercontent.com/render/math?math=hu(x,y,t)"> and <img src="https://render.githubusercontent.com/render/math?math=hv(x,y,t)"> Represents the flux-discharge along x and y direction respectively.
 
 ### The Shallow Water Equations.
 
@@ -39,7 +39,7 @@ The first equation represent the mass balance due to the change of water height 
 
 These set of equations can be written down on its conserved vector form as follows: 
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y} = \mathbf{S}(\mathbf{q}) %2B \mathbf{S}(\mathbf{q})">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y} = \mathbf{S}(\mathbf{q}) %2B \mathbf{R}(\mathbf{q})" height="10px">
 
 where the previous variables represents:
 
@@ -49,7 +49,7 @@ where the previous variables represents:
 
 <img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}}, -gh \frac{\partial z}{\partial y}} \right]^\top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}, -gh \frac{\partial z}{\partial y} \right]^\top">
 
 <img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top">
 
@@ -57,42 +57,33 @@ where $\mathbf{S}(\mathbf{q})$: represents the source term, $\mathbf{R}(\mathbf{
 
 ### A Finite Volume Discretization.
 
-In order to solve the set of equations presented in (\ref{ListForm:1}), (\ref{ListForm:2}), and (\ref{ListForm:3}) the finite volume method will be employed. First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\q) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form:
+In order to solve the SWE, the finite volume method is employed. First, the flux-field will be written in its vector form as: <img src="https://render.githubusercontent.com/render/math?math=\overrightarrow{\mathbf{F}}(\mathbf{q}) = (\mathbf{f},\mathbf{g})">. Then, equation (\ref{VecForm}) will take the form:
 
-<img src="https://render.githubusercontent.com/render/math?math=...">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t}} %2B \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) = \mathbf{S}(\mathbf{q}) %2B \mathbf{C}(\mathbf{q}) %2B \mathbf{R}(\mathbf{q})">
 
-<img src="https://render.githubusercontent.com/render/math?math=...">
-
-<img src="https://render.githubusercontent.com/render/math?math=...">
-
-<img src="https://render.githubusercontent.com/render/math?math=...">
-
-<img src="https://render.githubusercontent.com/render/math?math=...">
-\frac{\partial #1}{\partial t}}
-
-\begin{align}
-\dt{\q} + \nabla \cdot \overrightarrow{\F}(\q) = \S(\q) + \C(\q) + \R(\q)
-\end{align}
-
-Integrating by part over a finite triangular control volume $\Omega$, we get:
+Integrating by part over a finite triangular control volume <img src="https://render.githubusercontent.com/render/math?math=\Omega">, we get:
  
 \begin{align}
 \iint_{\Omega} \dt{\q} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\q) \; d \Omega= \iint_{\Omega} \left( \S(\q) + \C(\q) + \R(\q) \right) \; d \Omega 
 \end{align} 
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
 Applying the Stokes' theorem to a finite triangular element, we obtain: 
 
 \begin{align}
 \dt{\q} \cdot \Omega + \oint_{\Gamma} \F(\q) \cdot \overrightarrow{n} \; d \Gamma = \S(\q) \cdot \Omega + \C(\q) \cdot \Omega + \R(\q) \cdot \Omega
 \end{align}
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
 Where, $\Omega$: is the control volume, $\Gamma$: is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $\F(\q)$: is the normal flux to the edge of each side of the control volume. 
+
 
 Employing the Euler's method to discretize the temporal variable, we get: 
 
 \begin{align}\label{Euler}
 \q_j^{m+1} = \q_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \F_{jk}(\q^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \S_j(\q^{m})
 \end{align}
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
 Where $n_{jk}$: is the normal vector to the $k^{th}$ mid-point side of the $j^{th}$ triangle, $\Delta t$: is the time step, $\Delta \Omega_j$: is the control volume for the $j^{th}$ triangle, $l_{jk}$: is the length of the $k^{th}$ side of the $j^{th}$ triangle, and $\q_j^{m}$: is the vector of conserved variables for the $j^{th}$ triangle at the $m^{th}$ time step. 
 
@@ -101,12 +92,14 @@ Terms such as the bottom friction and Coriolis' force can be incorporated employ
 \begin{align}
 \C(\q) + \R(\q) \approx   H(\q^{m+1}) \cdot \q^{m+1}
 \end{align}
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
 In this regard, the friction and the Coriolis terms can be incorporated correcting the vector of conserved variables:
 
 \begin{align}\label{eq:update}
 \q_j^{m+1} = \frac{\q_j^{m+1}}{1 + \Delta t \cdot H(\q_j^{m+1})} 
 \end{align}
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
 ### First--Order Semi--Discrete Central Upwind.
 
@@ -242,7 +235,16 @@ In order to increase the stability in time domain, the time step should be caref
 
 
 
+<img src="https://render.githubusercontent.com/render/math?math=...">
 
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+
+<img src="https://render.githubusercontent.com/render/math?math=...">
+\frac{\partial #1}{\partial t}}
 
 
 Every project has a beautiful feature shocase page. It's easy to include images, in a flexible 3-column grid format. Make your photos 1/3, 2/3, or full width.
