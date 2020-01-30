@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 name: Danilo S. Kusanovic
-email: you@example.com
+email: dankusanovic@gmail.com
 description: > # this means to ignore newlines until "url:"
   Added on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -29,11 +29,11 @@ github_username: dankusanovic # your GitHub user name
 twitter_username: # your Twitter handle
 linkedin_username: danilo-kusanovic-07547b2a # your LinkedIn user name
 scholar_userid: # your Google Scholar ID
-orcid_id: # your ORCID ID
+orcid_id: https://orcid.org/0000-0002-0935-2577 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
-research_gate_profile: # your profile on ResearchGate
+research_gate_profile: https://www.researchgate.net/profile/Danilo_Kusanovic # your profile on ResearchGate
 blogger_url: # your blogger URL
 
 contact_note: >
