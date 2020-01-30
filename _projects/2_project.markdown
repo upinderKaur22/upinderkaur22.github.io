@@ -17,7 +17,7 @@ Because of the previous reasons, an improved first-order central-upwind was chos
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables <img src="https://render.githubusercontent.com/render/math?math=q"> as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q}"> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
 
 <div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" height="150" title="example image"/>
+    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" height="10" title="example image"/>
 </div>
 <div class="col three caption">
     Main (state) variables used to describe the shallow water equations (SWE).
@@ -39,7 +39,7 @@ The first equation represent the mass balance due to the change of water height 
 
 These set of equations can be written down on its conserved vector form as follows: 
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t}} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x}} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y}} = \mathbf{S}(\mathbf{q}) %2B \mathbf{S}(\mathbf{q})">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y} = \mathbf{S}(\mathbf{q}) %2B \mathbf{S}(\mathbf{q})">
 
 where the previous variables represents:
 
@@ -47,11 +47,11 @@ where the previous variables represents:
 
 <img src="https://render.githubusercontent.com/render/math?math=\mathbf{f}(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}}, -gh \frac{\partial z}{\partial y}} \right]^T">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}}, -gh \frac{\partial z}{\partial y}} \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top">
 
 where $\mathbf{S}(\mathbf{q})$: represents the source term, $\mathbf{R}(\mathbf{q})$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
 
