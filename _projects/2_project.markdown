@@ -115,6 +115,7 @@ $$
 The **First--order semi--discrete central--upwind** method is employed to solve the discrete form of the Sallow Water Equations. we use as a reference the scheme depicted in the figure bellow: 
 
 ![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="600px"} 
+
 *Figure 2: (a) Finite volume mesh, (b) typical control volume and its associated variables.*
 
 The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``in`` and the ``out`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
@@ -247,46 +248,20 @@ The main structure of the program is summarized in the following algoritm:
 ### Numerical Examples.
 
 #### Solitary Wave On A Simple Beach.
-Figure(\ref{fig:Fig005}) provides a schematic of the experiments indicating the parameters employed:
+The following figure provides a schematic of the experiments indicating the parameters employed:
 
-\begin{figure}[!ht]
-\centering \includegraphics[scale=0.225]{Fig005.png}
-\caption{Definition sketch of solitary wave run-up on a plane beach.}
-\label{fig:Fig005}
-\end{figure}
+![image-title-here](/assets/img/Project2/Fig005.png){:class="img-responsive"}{:height="" width="600px"} 
+*Figure 5: Definition sketch of solitary wave run-up on a plane beach.*
 
-The defined parameters in figure (\ref{fig:Fig006}) are, $H$: the incident solitary wave height, $R$: the run-up, $x_1$: represents the initial position of the 
-wave-crest, $x_0$: is the starting point of the sloping beach, $d$: is the constant bathymetry depth, and $g$: the gravitational constant. \\
+The defined parameters are: $$H$$ the incident solitary wave height, $$R$$ the run-up, $$x_1$$ represents the initial position of the wave-crest, $$x_0$$ is the starting point of the sloping beach, $$d$$ is the constant bathymetry depth, and $$g$$ the gravitational constant.
 
-Here, we have considered a $80 \; [m]$ long channel with soft conditions at both ends i.e, $x = -10 \; [m]$, and $x = 70 \; [m]$. Periodic condition were applied 
-for the upper and lower boundaries i.e $y = -5 \; [m]$, and $y = 5 \; [m]$. We use the parameters $x_0 = 19.85 \; [m]$, $x_1 = 37.35 \; [m]$, $d = 1.00 \; [m]$, 
-the gravitational constant was taken as $g = 9.80 \; [m/s^2]$. Surface roughness becomes important for runup over harsh slopes and a Manning's coefficient 
-$n = 0.01$ describes the surface condition of the smooth glass beach in the laboratory experiments. \\
+Here, we have considered a $$80 \; [m]$$ long channel with soft conditions at both ends i.e, $$x = -10 \; [m]$$, and $$x = 70 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e $$y = -5 \; [m]$$, and $$y = 5 \; [m]$$. We use the parameters $$x_0 = 19.85 \; [m]$$, $$x_1 = 37.35 \; [m]$$, $$d = 1.00 \; [m]$$, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. Surface roughness becomes important for runup over harsh slopes and a Manning's coefficient $$n = 0.01$$ describes the surface condition of the smooth glass beach in the laboratory experiments. 
 
-The animation should look like:
+<iframe width="420" height="" src="https://youtu.be/j0RL9FwNOV0" frameborder="0" allowfullscreen></iframe>
 
-\begin{figure}[!htb]
-     \begin{center}
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Run001.png}
-        }
-	\subfigure{
-            \includegraphics[width=0.375\textwidth]{Run002.png}
-        } \\ %  ------- End of the first row ----------------------%
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Run003.png}
-        } 
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Run004.png}
-        }
-    \end{center}
-    \label{fig:fig407_02}
-\end{figure}
 
 #### Solitary Wave On A Conical Island.
-Figure(\ref{fig:Fig006}) shows a schematic sketch of the experiment. The basin is $25 \; [m]$ long and $30 \; [m]$ wide. The circular 
-island has the shape of a truncated cone with diameters of $7.2 \; [m]$ at the base and $2.2 \; [m]$ at the crest. The island is $0.625 \; [m]$ high 
-and has a side slope of $1:4$. \\
+The following figure shows a schematic sketch of the experiment. The basin is $$25 \; [m]$$ long and $$30 \; [m]$$ wide. The circular island has the shape of a truncated cone with diameters of $$7.2 \; [m]$$ at the base and $$2.2 \; [m]$$ at the crest. The island is $$0.625 \; [m]$$ high and has a side slope of $$1:4$$. 
 
 \begin{figure}[!ht]
 \centering \includegraphics[scale=0.350]{Fig006.png}
@@ -294,31 +269,14 @@ and has a side slope of $1:4$. \\
 \label{fig:Fig006}
 \end{figure}
 
-Here, we consider a rectangular domain of $[-17.5,17.5] \times [-6.25,6.25]$ with soft conditions at both ends i.e., $x = -17.5 \;[m]$, and $x = 17.5 \; [m]$. Periodic 
-condition were applied for the upper and lower boundaries i.e., $y = -6.25 \; [m]$, and $y = 6.25 \; [m]$. We use the parameters $x_1 = 12.96 \; [m]$ as the starting 
-point of the wave height, the gravitational constant was taken as $g = 9.80 \; [m/s^2]$. The experiment also covers the water depths $d = 0.32 \; [m]$  and the solitary 
-wave heights $H = 0.0144 \; [m]$. Therefore, the solitary wave is generated from the left boundary, and a Manning's roughness coefficient was set to be $n = 0.016$ for 
-the smooth concrete finish. \\
+![image-title-here](/assets/img/Project2/Fig006.png){:class="img-responsive"}{:height="" width="600px"} 
+*Figure 6: Schematic sketch of the conical island experiment: (a) plane view and (b) side view.*
+
+Here, we consider a rectangular domain of $$[-17.5,17.5] \times [-6.25,6.25]$$ with soft conditions at both ends i.e., $$x = -17.5 \;[m]$$, and $$x = 17.5 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e., $$y = -6.25 \; [m]$$, and $$y = 6.25 \; [m]$$. We use the parameters $$x_1 = 12.96 \; [m]$$ as the starting point of the wave height, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. The experiment also covers the water depths $$d = 0.32 \; [m]$$  and the solitary wave heights $$H = 0.0144 \; [m]$$. Therefore, the solitary wave is generated from the left boundary, and a Manning's roughness coefficient was set to be $$n = 0.016$$ for the smooth concrete finish.
 
 The animation should look like:
 
-\begin{figure}[!htb]
-     \begin{center}
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Island001.png}
-        }
-	\subfigure{
-            \includegraphics[width=0.375\textwidth]{Island002.png}
-        } \\ %  ------- End of the first row ----------------------%
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Island003.png}
-        } 
-        \subfigure{
-            \includegraphics[width=0.375\textwidth]{Island004.png}
-        }
-    \end{center}
-    \label{fig:fig407_02}
-\end{figure}
+<iframe width="420" height="" src="https://youtu.be/DwpGGHFCna8" frameborder="0" allowfullscreen></iframe>
 
 
 ### References
