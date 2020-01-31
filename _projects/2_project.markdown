@@ -30,15 +30,15 @@ where the variables represented in the figure are: $$w(x,y,t)$$ the surface elev
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. A system of bi-dimensional equations is obtained, where the horizontal velocities are an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 $$
-h_t + (hu)_x + (hv)_y = 0 
+h_t + (hu)_x + (hv)_y = 0 \,,
 $$
 
 $$ 
-(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h B_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} 
+(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h B_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \,,
 $$
 
 $$
-(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h B_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
+(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h B_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \,,
 $$
 
 The first equation represents the mass balance due to the change of water height of the water column in a certain point, and the last two represent the moment balance due to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. This set of equations can be written down on its conserved vector form as follows: 
@@ -62,7 +62,7 @@ $$
 $$
 
 $$
-\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial B}{\partial x}}, -gh \frac{\partial B}{\partial y}} \right]^\top \,,
+\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial B}{\partial x}, -gh \frac{\partial B}{\partial y} \right]^\top \,,
 $$
 
 $$
@@ -77,19 +77,19 @@ and $$\mathbf{S}(\mathbf{q})$$ represents the source term, $$\mathbf{R}(\mathbf{
 The finite volume method is employed in order to solve the SWE. First, the flux-field will be written in its vector form as: $$\overrightarrow{\mathbf{F}}(\mathbf{q}) = (\mathbf{f},\mathbf{g})$$. Then, we have
 
 $$
-\frac{\partial \mathbf{q}}{\partial t}} + \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) = \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \,.
+\frac{\partial \mathbf{q}}{\partial t} + \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) = \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \,.
 $$
 
 Integrating by part over a finite triangular control volume $$\Omega$$, we get: 
  
 $$
-\iint_{\Omega} \frac{\partial \mathbf{q}}{\partial t}} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \right) \; d \Omega \,.
+\iint_{\Omega} \frac{\partial \mathbf{q}}{\partial t} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \right) \; d \Omega \,.
 $$
 
 Applying the Stokes' theorem to a finite triangular element, we obtain: \
 
 $$
-\frac{\partial \mathbf{q}}{\partial t}} \cdot \Omega + \oint_{\Gamma} \mathbf{F}(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \mathbf{S}(\mathbf{q}) \cdot \Omega + \mathbf{C}(\mathbf{q}) \cdot \Omega + \mathbf{R}(\mathbf{q}) \cdot \Omega \,,
+\frac{\partial \mathbf{q}}{\partial t} \cdot \Omega + \oint_{\Gamma} \mathbf{F}(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \mathbf{S}(\mathbf{q}) \cdot \Omega + \mathbf{C}(\mathbf{q}) \cdot \Omega + \mathbf{R}(\mathbf{q}) \cdot \Omega \,,
 $$
 
 where $$\Omega$$ is the control volume, $$\Gamma$$ is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $$\mathbf{F}(\mathbf{q})$$: is the normal flux to the edge of each side of the control volume. 
