@@ -188,21 +188,21 @@ $$
 Finally, the one-sided normal velocities $$w^{in}_{jk}$$ and $$w^{out}_{jk}$$ can be computed as
 
 $$
-w^{in}_{jk}  &= u^{in}_{jk} \cdot n_{jk}^x +  v^{in}_{jk} \cdot n_{jk}^y \,,
+w^{in}_{jk}  = u^{in}_{jk} \cdot n_{jk}^x +  v^{in}_{jk} \cdot n_{jk}^y \,,
 $$
 
 $$
-w^{out}_{jk} &= u^{out}_{jk} \cdot n_{jk}^x +  v^{out}_{jk} \cdot n_{jk}^y \,.
+w^{out}_{jk} = u^{out}_{jk} \cdot n_{jk}^x +  v^{out}_{jk} \cdot n_{jk}^y \,.
 $$
 
 Then, the local propagation speed becomes:
 
 $$
-a^{in}_{jk}  &=  \max \left(w^{in}_{jk} + \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} + \sqrt{g \cdot h^{out}_{jk}},0 \right) 
+a^{in}_{jk}  =  \max \left(w^{in}_{jk} + \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} + \sqrt{g \cdot h^{out}_{jk}},0 \right) 
 $$
 
 $$
-a^{out}_{jk} &= -\min \left(w^{in}_{jk} - \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} - \sqrt{g \cdot h^{out}_{jk}},0 \right)
+a^{out}_{jk} = -\min \left(w^{in}_{jk} - \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} - \sqrt{g \cdot h^{out}_{jk}},0 \right)
 $$
 
 Once equipped with all the previous quantities, we can evaluate the mid-point conserved variables values at each side: 
@@ -213,6 +213,7 @@ $$
 
 $$
 \mathbf{f}(\mathbf{q}_{jk}) = \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^\top \,,
+$$
 
 $$
 \mathbf{g}(\mathbf{q}_{jk}) = \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^\top \,. 
@@ -221,15 +222,15 @@ $$
 The central-upwind scheme [[1]](#1) for the $$j^{th}$$ finite control volume $$j^{th}$$ must fulfill: 
 
 $$
-\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \f(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \f(\mathbf{q}^{in}_{jk}) \Big) -
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \left( a_{jk}^{in} \cdot \mathbf{f}(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \mathbf{f}(\mathbf{q}^{in}_{jk}) \right) -
 $$
 
 $$
-\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \g(\mathbf{q}^{in}_{jk}) \Big) +
+\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \left( a_{jk}^{in} \cdot \mathbf{g}(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \mathbf{g}(\mathbf{q}^{in}_{jk}) \right) +
 $$
 
 $$
-\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \Big) + \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j)
+\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \left( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \right) + \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j)
 $$
 
 In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as 
