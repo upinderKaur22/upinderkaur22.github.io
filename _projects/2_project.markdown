@@ -5,12 +5,12 @@ description: How to speedup the Shallow Water Equations on Graphic processors.
 img: /assets/img/2.jpg
 ---
 
-This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]], and [[4]]. The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
+This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1), and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
 here SWE, which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
 
-In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]]. 
+In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]](#1). 
 
-Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see [[2]], which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level [[3]], employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
+Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see [[2]](#2), which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level [[3]](#3), employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
 ### Model Definition.
 
