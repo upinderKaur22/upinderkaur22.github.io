@@ -5,7 +5,7 @@ description: How to speedup the Shallow Water Equations on Graphic processors.
 img: /assets/img/2.jpg
 ---
 
-This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1) and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
+This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1) and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the ***Shallow Water Equations***, 
 here SWE, which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
 
 In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]](#1). 
@@ -23,7 +23,7 @@ In this section, it will be defined the main variables that are going to be empl
   \label{fig:Fig001}
 \end{figure}
 
-where the variables represented in the figure are: $$w(x,y,t)$$ the surface elevation,  measured from mean sea level to the water level. $$h(x,y,t)$$ the water depth which is measured from the bed elevation to the water surface. $$u(x,y,t)$$ the velocity field along $$x$$-direction, and $$v(x,y,t)$$ the velocity field along $$y$$-direction. $$B(x,y)$$ represents the bathymetry. It is measured from the mean sea level to the bottom floor. In addition, there are other associated variables $$hu(x,y,t)$$ is the flux-discharge along $$x$$-direction, [$$m^2/s$$], and $$hv(x,y,t)$$ is the flux-discharge along $$y$$-direction, [$$m^2/s$$].
+where the variables represented in the figure are: $$w(x,y,t)$$ the surface elevation,  measured from mean sea level to the water level. $$h(x,y,t)$$ the water depth which is measured from the bed elevation to the water surface. $$u(x,y,t)$$ the velocity field along $$x$$-direction, and $$v(x,y,t)$$ the velocity field along $$y$$-direction. $$B(x,y)$$ represents the bathymetry. It is measured from the mean sea level to the bottom floor. In addition, there are other associated variables $$hu(x,y,t)$$ is the flux-discharge along $$x$$-direction, and $$hv(x,y,t)$$ is the flux-discharge along $$y$$-direction.
 
 ### The Shallow Water Equations.
 
@@ -86,13 +86,13 @@ $$
 \iint_{\Omega} \frac{\partial \mathbf{q}}{\partial t} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \right) \; d \Omega \,.
 $$
 
-Applying the Stokes' theorem to a finite triangular element, we obtain: \
+Applying the Stokes' theorem to a finite triangular element, we obtain:
 
 $$
 \frac{\partial \mathbf{q}}{\partial t} \cdot \Omega + \oint_{\Gamma} \mathbf{F}(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \mathbf{S}(\mathbf{q}) \cdot \Omega + \mathbf{C}(\mathbf{q}) \cdot \Omega + \mathbf{R}(\mathbf{q}) \cdot \Omega \,,
 $$
 
-where $$\Omega$$ is the control volume, $$\Gamma$$ is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $$\mathbf{F}(\mathbf{q})$$: is the normal flux to the edge of each side of the control volume. 
+where $$\Omega$$ is the control volume, $$\Gamma$$ is the boundary of the control volume, $$\overrightarrow{n}$$ is the outward normal vector on the side, and $$\mathbf{F}(\mathbf{q})$$ is the normal flux to the edge of each side of the control volume. 
 
 Employing the Euler's method to discretize the temporal variable, we get:
 
@@ -105,19 +105,18 @@ where $$n_{jk}$$ is the normal vector to the $$k^{th}$$ mid-point side of the $$
 Terms such as the bottom friction and Coriolis' force can be incorporated employing a semi-implicit discretization: 
 
 $$
-\mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \approx  H(\mathbf{q}^{m+1}) \cdot \mathbf{q}^{m+1}
+\mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \approx  H(\mathbf{q}^{m+1}) \cdot \mathbf{q}^{m+1} \,.
 $$
 
 In this regard, the friction and the Coriolis terms can be incorporated correcting the vector of conserved variables: 
 
 $$
-\mathbf{q}_j^{m+1} = \frac{\mathbf{q}_j^{m+1}}{1 + \Delta t \cdot H(\mathbf{q}_j^{m+1})} 
+\mathbf{q}_j^{m+1} = \frac{\mathbf{q}_j^{m+1}}{1 + \Delta t \cdot H(\mathbf{q}_j^{m+1})} \,.
 $$
 
 ### First--Order Semi--Discrete Central Upwind.
 
-In this section, the \emph{First--order semi--discrete central--upwind} method will be employed to solve the discrete form of the Sallow Water Equations presented in 
-equation(\ref{Euler}). In order to get a better understanding of the method, it is a smart idea to use as a reference the scheme depicted in figure (\ref{Fig002}): \\ 
+The **First--order semi--discrete central--upwind** method is employed to solve the discrete form of the Sallow Water Equations. we use as a reference the scheme depicted in the figure bellow: 
 
 \begin{figure}[ht] 
   \centering
@@ -126,31 +125,25 @@ equation(\ref{Euler}). In order to get a better understanding of the method, it 
   \label{Fig002}
 \end{figure}
 
-The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the 
-element. Therefore, a discontinuous values will be provided at each side of the element, this is ``$in$'' and the ``$out$'' interface as it is shown in figure (\ref{fig:Fig003}). In order 
-to obtain the final states of the conserved variables, a single value of bed elevation suggested by \cite{Klein} should be defined: \
+The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``$$in$$`` and the ``$$out$$`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
 
-\begin{align}\label{eq:DefBatimetria}
- B_{jk} = \max \left( B^{in}_{jk},B^{out}_{jk} \right)
-\end{align}\
+$$
+ B_{jk} = \max \left( B^{in}_{jk},B^{out}_{jk} \right) \,.
+$$
 
-The \emph{First--Order Semi--Discrete Central--Upwind Method} begins by knowing the explicit functions of the conserved variables at the mass center of each triangle 
-at the previous time step, i.e., $\mathbf{q}_j^m$. Then, a piece-wise constant reconstruction will be employed, this is, the conserved variable values at the mid-point of 
-each side are the same as the mass center. \
+The **First--Order Semi--Discrete Central--Upwind Method** begins by knowing the explicit functions of the conserved variables at the mass center of each triangle at the previous time step, i.e., $$\mathbf{q}_j^m$$. Then, a piece-wise constant reconstruction will be employed, this is, the conserved variable values at the mid-point of each side are the same as the mass center. 
 
-\begin{align}\label{eq:Reconstruccion}
-\mathbf{q}_{jk}^{in} = \mathbf{q}_j^{m} 
-\end{align}\
+$$
+\mathbf{q}_{jk}^{in} = \mathbf{q}_j^{m} \,.
+$$
 
-The water level surface reconstruction must be so that the water depth has to be always positive; therefore, the reconstructed water depth at the midpoint $h_{jk}$
-should be re-defined as: 
+The water level surface reconstruction must be so that the water depth has to be always positive; therefore, the reconstructed water depth at the midpoint $$h_{jk}$$ should be re-defined as: 
 
-\begin{align}\label{eq:Profundidad}
-h^{in}_{jk} = \max \left(Tol, w^{in}_{jk} - B_{jk} \right)
-\end{align}\
+$$
+h^{in}_{jk} = \max \left(Tol, w^{in}_{jk} - B_{jk} \right) \,.
+$$
 
-It is trivial to prove that the reconstruction process defined above do not affect the well-balanced property of the numerical scheme when only wet-bed applications are 
-simulated. However, for dry-bed applications, the well-balanced property is violated, see figure(\ref{fig:Fig003}). \\
+It is simple to show that the reconstruction process defined above do not affect the well-balanced property of the numerical scheme when only wet-bed applications are simulated. However, for dry-bed applications, the well-balanced property is violated, see the following figure
 
 \begin{figure}[ht]
   \centering
@@ -160,71 +153,84 @@ simulated. However, for dry-bed applications, the well-balanced property is viol
   \label{fig:Fig003}
 \end{figure}
  
-The fluxes at the interface between element $i$ and $j1$ are calculated using the bed elevation in equation (\ref{eq:DefBatimetria}); however, fluxes at the other two 
-element interfaces are evaluated with the actual water surface elevation $w^{in}_{jk}$ in element $i$, which drives the flow into motion in the cell $i$ and violates the 
-well-balanced property of the scheme. The local bed modification is proposed by \cite{Liang} to tackle this problem. As shown in figure(\ref{fig:Fig003}.a), the difference 
-between the actual and fake water level at midpoint $_{jk}$ is calculated by:
+The fluxes at the interface between element $$i$$ and $$j1$$ are calculated using the bed elevation; however, fluxes at the other two element interfaces are evaluated with the actual water surface elevation $$w^{in}_{jk}$$ in element $$i$$, which drives the flow into motion in the cell $$i$$ and violates the well-balanced property of the scheme. The local bed modification is proposed by [[4]](#4) to tackle this problem. As shown in last figure, the difference between the actual and fake water level at midpoint $$_{jk}$$ is calculated by:
 
-\begin{align}\label{eq:Balance}
-\Delta z = \max \left( 0, B_{jk} - w^{in}_{jk} \right)
-\end{align}\
+$$
+\Delta z = \max \left( 0, B_{jk} - w^{in}_{jk} \right) \,.
+$$
 
-Then, the bed elevation and reconstructed water surface elevations at midpoint $w^{in}_{jk}$ are locally modified by subtracting $\Delta z$ from original values: \
+Then, the bed elevation and reconstructed water surface elevations at midpoint $$w^{in}_{jk}$$ are locally modified by subtracting $$\Delta z$$ from original values: 
 
-\begin{align}\label{eq:BuenBalance}
+$$
 w^{in}_{jk} = w^{in}_{jk} - \Delta z
-\end{align}\
+$$
 
-Once the provided reconstruction preserves the positivity of the water depth, and it is well-balanced, the computation of the velocity field $u^{in}_{jk}$ y $v^{in}_{jk}$ must 
-be carried out: \
+Once the provided reconstruction preserves the positivity of the water depth, and it is well-balanced, the computation of the velocity field $$u^{in}_{jk}$$ and $$v^{in}_{jk}$$ must be carried out: 
 
-\begin{align}\label{eq:Desingularizar_u}
+$$
 u^{in}_{jk} = \frac{\sqrt{2} \cdot h^{in}_{jk} \cdot hu^{in}_{jk}}{\sqrt{(h^{in}_{jk})^4 + max((h^{in}_{jk})^4,Tol)}}
-\end{align}
+$$
 
-\begin{align}\label{eq:Desingularizar_v}
+$$
 v^{in}_{jk} = \frac{\sqrt{2} \cdot h^{in}_{jk} \cdot hv^{in}_{jk}}{\sqrt{(h^{in}_{jk})^4 + max((h^{in}_{jk})^4,Tol)}} 
-\end{align}\
+$$
 
-The flux-discharge must be re-computed due to modifications in equation(\ref{eq:Desingularizar_u}), and \ref{eq:Desingularizar_v}: 
+The flux-discharge must be re-computed due to modifications performed to $u$ and $v$ velocities: 
 
-\begin{align} 
-  hu^{in}_{jk} = h^{in}_{jk} \cdot u^{in}_{jk} \label{eq:recalculo_u} \\
-  hv^{in}_{jk} = h^{in}_{jk} \cdot v^{in}_{jk} \label{eq:recalculo_v}
-\end{align}\
+$$
+hu^{in}_{jk} = h^{in}_{jk} \cdot u^{in}_{jk} \,,
+$$
 
-Finally, the one-sided normal velocities $w^{in}_{jk}$ y $w^{out}_{jk}$ can be computed as: 
-\begin{align}
-w^{in}_{jk}  &= u^{in}_{jk} \cdot n_{jk}^x +  v^{in}_{jk} \cdot n_{jk}^y \\
-w^{out}_{jk} &= u^{out}_{jk} \cdot n_{jk}^x +  v^{out}_{jk} \cdot n_{jk}^y
-\end{align}\
+$$
+hv^{in}_{jk} = h^{in}_{jk} \cdot v^{in}_{jk} \,.
+$$
 
-Then, the local propagation speed will become: \
+Finally, the one-sided normal velocities $$w^{in}_{jk}$$ and $$w^{out}_{jk}$$ can be computed as
 
-\begin{align}\label{eq:unaDir}
-a^{in}_{jk}  &=  \max \left(w^{in}_{jk} + \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} + \sqrt{g \cdot h^{out}_{jk}},0 \right)\\
-\nonumber \\
+$$
+w^{in}_{jk}  &= u^{in}_{jk} \cdot n_{jk}^x +  v^{in}_{jk} \cdot n_{jk}^y \,,
+$$
+
+$$
+w^{out}_{jk} &= u^{out}_{jk} \cdot n_{jk}^x +  v^{out}_{jk} \cdot n_{jk}^y \,.
+$$
+
+Then, the local propagation speed becomes:
+
+$$
+a^{in}_{jk}  &=  \max \left(w^{in}_{jk} + \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} + \sqrt{g \cdot h^{out}_{jk}},0 \right) 
+$$
+
+$$
 a^{out}_{jk} &= -\min \left(w^{in}_{jk} - \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk} - \sqrt{g \cdot h^{out}_{jk}},0 \right)
-\end{align}\
+$$
 
-Once equipped with all the previous quantities, we can evaluate the mid-point conserved variables values at each side: \
+Once equipped with all the previous quantities, we can evaluate the mid-point conserved variables values at each side: 
 
-\begin{align} \label{eq:FluxFunc} 
-\; \mathbf{q}_{jk}  &= \left[ h_{jk} , hu_{jk}, hv_{jk} \right]^T  \\ 
-\mathbf{f}(\mathbf{q}_{jk}) &= \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^T \\
-\g(\mathbf{q}_{jk}) &= \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^T 
-\end{align}
+$$
+\mathbf{q}_{jk}  = \left[ h_{jk} , hu_{jk}, hv_{jk} \right]^\top \,,
+$$
 
-The central-upwind scheme \cite{Kurganov_1} for the $j^{th}$ finite control volume $j^{th}$ must fulfill: \
+$$
+\mathbf{f}(\mathbf{q}_{jk}) = \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^\top \,,
 
-\begin{align}\label{eq:CentralUpwind}
-\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \f(\mathbf{q}^{out}_{jk}) + 
-			   a_{jk}^{out} \cdot  \f(\mathbf{q}^{in}_{jk}) \Big) \nonumber \\
-                      & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\mathbf{q}^{out}_{jk}) + 
-			   a_{jk}^{out} \cdot  \g(\mathbf{q}^{in}_{jk}) \Big) \\
-                      & + \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \Big) + 
-			  \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j) \nonumber
-\end{align}\
+$$
+\mathbf{g}(\mathbf{q}_{jk}) = \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^\top \,. 
+$$
+
+The central-upwind scheme [[1]](#1) for the $$j^{th}$$ finite control volume $$j^{th}$$ must fulfill: 
+
+$$
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \f(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \f(\mathbf{q}^{in}_{jk}) \Big) -
+$$
+
+$$
+\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\mathbf{q}^{out}_{jk}) + a_{jk}^{out} \cdot  \g(\mathbf{q}^{in}_{jk}) \Big) +
+$$
+
+$$
+\frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \Big) + \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j)
+$$
 
 In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as 
 $\mathbf{q} = [ C , 0 ,0 ]^T$ the evolution should stay the same. One can observe that when the water is at rest $\mathbf{q}_j = \mathbf{q}_{jk} = [ C , 0 ,0 ]^T$, the one sided propagation 
