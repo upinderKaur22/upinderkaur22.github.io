@@ -257,17 +257,11 @@ The defined parameters are: $$H$$ the incident solitary wave height, $$R$$ the r
 
 Here, we have considered a $$80 \; [m]$$ long channel with soft conditions at both ends i.e, $$x = -10 \; [m]$$, and $$x = 70 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e $$y = -5 \; [m]$$, and $$y = 5 \; [m]$$. We use the parameters $$x_0 = 19.85 \; [m]$$, $$x_1 = 37.35 \; [m]$$, $$d = 1.00 \; [m]$$, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. Surface roughness becomes important for runup over harsh slopes and a Manning's coefficient $$n = 0.01$$ describes the surface condition of the smooth glass beach in the laboratory experiments. 
 
-<iframe width="420" height="" src="https://youtu.be/j0RL9FwNOV0" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="360" src="https://www.youtube.com/watch?v=j0RL9FwNOV0" frameborder="0" allowfullscreen></iframe>
 
 
 #### Solitary Wave On A Conical Island.
 The following figure shows a schematic sketch of the experiment. The basin is $$25 \; [m]$$ long and $$30 \; [m]$$ wide. The circular island has the shape of a truncated cone with diameters of $$7.2 \; [m]$$ at the base and $$2.2 \; [m]$$ at the crest. The island is $$0.625 \; [m]$$ high and has a side slope of $$1:4$$. 
-
-\begin{figure}[!ht]
-\centering \includegraphics[scale=0.350]{Fig006.png}
-\caption{Schematic sketch of the conical island experiment: (a) plane view and (b) side view.}
-\label{fig:Fig006}
-\end{figure}
 
 ![image-title-here](/assets/img/Project2/Fig006.png){:class="img-responsive"}{:height="" width="600px"} 
 *Figure 6: Schematic sketch of the conical island experiment: (a) plane view and (b) side view.*
@@ -276,7 +270,7 @@ Here, we consider a rectangular domain of $$[-17.5,17.5] \times [-6.25,6.25]$$ w
 
 The animation should look like:
 
-<iframe width="420" height="" src="https://youtu.be/DwpGGHFCna8" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="360" src="https://www.youtube.com/watch?v=DwpGGHFCna8" frameborder="0" allowfullscreen></iframe>
 
 
 ### References
