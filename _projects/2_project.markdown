@@ -249,7 +249,8 @@ The complete process can be clearly understood referencing figure(\ref{fig:Fig00
   \label{fig:Fig004}
 \end{figure}
 
-![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="400px"}
+![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="700px"}
+*First--Order Semi--Discrete Central--Upwind Method. (a) Continuous conserved variables, (b) Piece-wise constant reconstruction, (c) Positivity preserving reconstruction, (d) Well-balanced reconstruction, (e) Flux-function computation, (f) Conserved variables update.*
 
 In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
 
