@@ -125,7 +125,7 @@ The **First--order semi--discrete central--upwind** method is employed to solve 
   \label{Fig002}
 \end{figure}
 
-The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``$$in$$`` and the ``$$out$$`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
+The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``in`` and the ``out`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
 
 $$
  B_{jk} = \max \left( B^{in}_{jk},B^{out}_{jk} \right) \,.
@@ -233,22 +233,13 @@ $$
 \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \left( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \right) + \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j)
 $$
 
-In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as 
-$\mathbf{q} = [ C , 0 ,0 ]^T$ the evolution should stay the same. One can observe that when the water is at rest $\mathbf{q}_j = \mathbf{q}_{jk} = [ C , 0 ,0 ]^T$, the one sided propagation 
-speed in equation(\ref{eq:unaDir}) becomes $a_{jk}^{in} = a_{jk}^{out}$, thus the source term becomes: \
+In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as $$\mathbf{q} = [ C , 0 ,0 ]^\top$$ the evolution should stay the same. One can observe that when the water is at rest $$\mathbf{q}_j = \mathbf{q}_{jk} = [ C , 0 ,0 ]^\top$$, the one sided propagation speed becomes $$a_{jk}^{in} = a_{jk}^{out}$$, thus the source term becomes:
 
-\begin{align}\label{eq:Fuente}
-\mathbf{S}_j(\mathbf{q}) &= \left[ \begin{array}{c}
-		    0 \\
-		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2} \\
-		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2} \\
-		    \end{array}
-\right]
-\end{align}\
+$$
+\mathbf{S}_j(\mathbf{q}) = \left[ \begin{array}{c} 0 \\ \frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2 \\ \frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2 \end{array} \right]
+$$
 
-\vspace{3mm}
-
-The complete process can be clearly understood referencing figure(\ref{fig:Fig004}): \\
+The complete process can be clearly understood referencing figure(\ref{fig:Fig004}): 
 
 \begin{figure}[ht] 
   \centering
@@ -258,11 +249,13 @@ The complete process can be clearly understood referencing figure(\ref{fig:Fig00
   \label{fig:Fig004}
 \end{figure}
 
-In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see \cite{CFL}: \
+![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}
 
-\begin{align}\label{eq:DT}
-\Delta t &< \frac{1}{3} \min_{j,k} \left[ \frac{r_{jk}}{\max \left( a^{in}_{jk},a^{out}_{jk} \right) } \right]
-\end{align}
+In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
+
+$$
+\Delta t < \frac{1}{3} \min_{j,k} \left[ \frac{r_{jk}}{\max \left( a^{in}_{jk},a^{out}_{jk} \right) } \right] \,.
+$$
 
 ### SWE Algorithm.
 The main structure of the program is summarized in algoritm (\ref{alg:CentralUpwind}): \\
