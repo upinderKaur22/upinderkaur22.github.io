@@ -114,7 +114,7 @@ $$
 
 The **First--order semi--discrete central--upwind** method is employed to solve the discrete form of the Sallow Water Equations. we use as a reference the scheme depicted in the figure bellow: 
 
-![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="600px"}
+![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="600px"} 
 *Figure 2: (a) Finite volume mesh, (b) typical control volume and its associated variables.*
 
 The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``in`` and the ``out`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
@@ -137,7 +137,7 @@ $$
 
 It is simple to show that the reconstruction process defined above do not affect the well-balanced property of the numerical scheme when only wet-bed applications are simulated. However, for dry-bed applications, the well-balanced property is violated, see the following figure
 
-![image-title-here](/assets/img/Project2/Fig003.png){:class="img-responsive"}{:height="" width="500px"}
+![image-title-here](/assets/img/Project2/Fig003.png){:class="img-responsive"}{:height="" width="500px"} 
 *Figure 3: (a) The $$i^{th}$$ wet element shares a common edge with the $$j1^{th}$$ dry element, and the bed elevation of dry element is higher than the water level at the centroid of the $$i^{th}$$ element. (b) The difference between the actual and fake water level at midpoint $$_{jk}$$.*
  
 The fluxes at the interface between element $$i$$ and $$j1$$ are calculated using the bed elevation; however, fluxes at the other two element interfaces are evaluated with the actual water surface elevation $$w^{in}_{jk}$$ in element $$i$$, which drives the flow into motion in the cell $$i$$ and violates the well-balanced property of the scheme. The local bed modification is proposed by [[4]](#4) to tackle this problem. As shown in last figure, the difference between the actual and fake water level at midpoint $$_{jk}$$ is calculated by:
@@ -228,7 +228,7 @@ $$
 
 The complete process can be clearly understood referencing figure(\ref{fig:Fig004}): 
 
-![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="700px"}
+![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="700px"} 
 *Figure 4: First--Order Semi--Discrete Central--Upwind Method. (a) Continuous conserved variables, (b) Piece-wise constant reconstruction, (c) Positivity preserving reconstruction, (d) Well-balanced reconstruction, (e) Flux-function computation, (f) Conserved variables update.*
 
 In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
