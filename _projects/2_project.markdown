@@ -114,7 +114,7 @@ $$
 
 The **First--order semi--discrete central--upwind** method is employed to solve the discrete form of the Sallow Water Equations. we use as a reference the scheme depicted in the figure bellow: 
 
-![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="700px"}
+![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="600px"}
 *Figure 2: (a) Finite volume mesh, (b) typical control volume and its associated variables.*
 
 The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``in`` and the ``out`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
@@ -137,7 +137,7 @@ $$
 
 It is simple to show that the reconstruction process defined above do not affect the well-balanced property of the numerical scheme when only wet-bed applications are simulated. However, for dry-bed applications, the well-balanced property is violated, see the following figure
 
-![image-title-here](/assets/img/Project2/Fig003.png){:class="img-responsive"}{:height="" width="700px"}
+![image-title-here](/assets/img/Project2/Fig003.png){:class="img-responsive"}{:height="" width="500px"}
 *Figure 3: (a) The $$i^{th}$$ wet element shares a common edge with the $$j1^{th}$$ dry element, and the bed elevation of dry element is higher than the water level at the centroid of the $$i^{th}$$ element. (b) The difference between the actual and fake water level at midpoint $$_{jk}$$.*
  
 The fluxes at the interface between element $$i$$ and $$j1$$ are calculated using the bed elevation; however, fluxes at the other two element interfaces are evaluated with the actual water surface elevation $$w^{in}_{jk}$$ in element $$i$$, which drives the flow into motion in the cell $$i$$ and violates the well-balanced property of the scheme. The local bed modification is proposed by [[4]](#4) to tackle this problem. As shown in last figure, the difference between the actual and fake water level at midpoint $$_{jk}$$ is calculated by:
@@ -234,56 +234,13 @@ The complete process can be clearly understood referencing figure(\ref{fig:Fig00
 In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
 
 $$
-\Delta t < \frac{1}{3} \min_{j,k} \left[ \frac{r_{jk}}{\max \left( a^{in}_{jk},a^{out}_{jk} \right) } \right] \,.
+\Delta t \leq \frac{1}{3} \min_{j,k} \left[ \frac{r_{jk}}{\max \left( a^{in}_{jk},a^{out}_{jk} \right) } \right] \,.
 $$
 
 ### SWE Algorithm.
-The main structure of the program is summarized in algoritm (\ref{alg:CentralUpwind}): \\
+The main structure of the program is summarized in the following algoritm: 
 
-\begin{algorithm}[!hbt]
-  \begin{algorithmic}[1]
-     \REQUIRE \texttt{Inputs}: 
-	       \begin{itemize}
-                \item Total time of simulation: $t_{max}$ [s]. 
-   		%\item Time sampling: $\Delta t_{save}$ [s]
-                %\item Manning's coefficient: $n$ [1]. 
-                \item Maximum allowed tolerance: $Tol$ [m]. 
-                %\item Constant of gravity: $g$ [$m/s^2$].  
-                %\item Elements array: $ElemNodes$
-                %\item Neighbor array: $ElemNeigh$.
-                %\item Coordinate array: $ElemCoords$.
-                \item Bathymetry values: $B_{jk}$.
-                \item Initial condition: $w_{jk}^0$, $hu_{jk}^0$, $hv_{jk}^0$.
-               \end{itemize}
-      %\vspace{1.5mm}
-      \REQUIRE \texttt{Process}: 
-      	       \begin{itemize}
-                 \item Compute the area of each triangle: $\Omega_{j}$. 
-                 \item Compute the length of each sides: $l_{jk}$. 
-		 \item Compute the altitude of each sides: $r_{jk}$.
-                 \item Compute the normal vectors: $\overrightarrow{n}_{jk}$. 
-               \end{itemize}
-      %\vspace{1.5mm}
-      \WHILE {$t \leq t_{max}$}
-      %\vspace{1.0mm}
-	  \STATE Piece-wise constant Reconstruction $\mathbf{q}^{(1)} \leftarrow \eta_{jk}$, use (\ref{eq:Reconstruccion})
-	  \STATE Impose water depth positivity preserving, use (\ref{eq:Profundidad})
-	  \STATE Flux-discharge reconstruction $\mathbf{q}^{(2)} \leftarrow hu_{jk}$, $\mathbf{q}^{(3)} \leftarrow hv_{jk}$, use (\ref{eq:Reconstruccion})
-	  \STATE Desingularize the velocities $u_{jk}$, $v_{jk}$, use (\ref{eq:Desingularizar_u}), (\ref{eq:Desingularizar_v})
-	  \STATE Re-compute the flux-discharge $hu_{jk}$, $hv_{jk}$, use (\ref{eq:recalculo_u}), (\ref{eq:recalculo_v})
-	  \STATE Compute the one-sided speed velocities $a^{in}_{jk}$, $a^{out}_{jk}$, use (\ref{eq:unaDir})
-	  \STATE Compute the maximum allowed time step $\Delta t$,  use (\ref{eq:DT})
-	  \STATE Evaluate the source term $\mathbf{S}_j$,  use (\ref{eq:Fuente})
-	  \STATE Evaluate the friction term $\R_j$,  use (\ref{eq:Fuente})
-	  \STATE Evaluate the flux functions $\mathbf{f}(\mathbf{q}_{jk})$, $\g(\mathbf{q}_{jk})$, use (\ref{eq:FluxFunc})
-	  \STATE Update the state variables $\mathbf{q}_j$,  use (\ref{eq:CentralUpwind})
-	  \STATE Correct the states variables $\mathbf{q}_j$,  use (\ref{eq:update})
-          \STATE Impose boundary conditions.
-	  %\vspace{1.0mm}
-      \ENDWHILE
-  \end{algorithmic}
-  \caption{First--Order Well-Balanced Positivity Preserving Central-Upwind}\label{alg:CentralUpwind}
-\end{algorithm}
+![image-title-here](/assets/img/Project2/AlgorithmSWE.png){:class="img-responsive"}{:height="" width="700px"}
 
 ### Numerical Examples.
 
