@@ -29,17 +29,17 @@ where in the figure <img src="https://render.githubusercontent.com/render/math?m
 
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. In this regard, a system of bi-dimensional equations is obtained, in which the horizontal velocities represents an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
-<img src="https://render.githubusercontent.com/render/math?math=h_t %2B (hu)_x %2B (hv)_y = 0" height="75px">
+<img src="https://render.githubusercontent.com/render/math?math=h_t %2B (hu)_x %2B (hv)_y = 0" height="20px">
 
-<img src="https://render.githubusercontent.com/render/math?math=(hu)_t %2B \left(hu^2 %2B \frac{1}{2} g h^2 \right)_x %2B (huv)_y = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}" height="75px">
+<img src="https://render.githubusercontent.com/render/math?math=(hu)_t %2B \left(hu^2 %2B \frac{1}{2} g h^2 \right)_x %2B (huv)_y = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}" height="25px">
 
-<img src="https://render.githubusercontent.com/render/math?math=(hv)_t %2B (huv)_x  %2B \left( hv^2 %2B \frac{1}{2} g h^2 \right)_y = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}" height="75px">
+<img src="https://render.githubusercontent.com/render/math?math=(hv)_t %2B (huv)_x  %2B \left( hv^2 %2B \frac{1}{2} g h^2 \right)_y = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}" height="25px">
 
 The first equation represent the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. The second and third equations represent the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. 
 
 These set of equations can be written down on its conserved vector form as follows: 
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y} = \mathbf{S}(\mathbf{q}) %2B \mathbf{R}(\mathbf{q})" height="75px">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial \mathbf{q}}{\partial t} %2B \frac{\partial \mathbf{f}(\mathbf{q})}{\partial x} %2B \frac{\partial \mathbf{g}(\mathbf{q})}{\partial y} = \mathbf{S}(\mathbf{q}) %2B \mathbf{R}(\mathbf{q})" height="50px">
 
 where the previous variables represents:
 
