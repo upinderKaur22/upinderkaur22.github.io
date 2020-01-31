@@ -30,17 +30,15 @@ where the variables represented in the figure are: $$w(x,y,t)$$ the surface elev
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. A system of bi-dimensional equations is obtained, where the horizontal velocities are an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 $$
-h_t + (hu)_x + (hv)_y = 0 \\
-(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \\
-(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
+h_t + (hu)_x + (hv)_y = 0 
 $$
 
 $$ 
-(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} 
+(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h B_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} 
 $$
 
 $$
-(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
+(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h B_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
 $$
 
 The latter equation represents the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. Equations (\ref{ListForm:2}) and (\ref{ListForm:3}) represents the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. This set of equations can be written down on its conserved vector form as follows: 
