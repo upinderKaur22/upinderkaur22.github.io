@@ -37,7 +37,7 @@ research_gate_profile: https://www.researchgate.net/profile/Danilo_Kusanovic # y
 blogger_url: # your blogger URL
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  
 
 google_analytics: UA-XXXXXXXXX # out your google-analytics code
 
@@ -78,7 +78,7 @@ collections:
     output: true
     permalink: /projects/:path/
 
-news_limit: 5
+news_limit: 10
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -99,6 +99,7 @@ plugins:
     - jekyll/scholar
     - jemoji
     - jekyll-latex
+    - jekyll-youtube
 
 # Jekyll-Scholar
 scholar:
