@@ -41,74 +41,80 @@ $$
 (hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h B_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
 $$
 
-The latter equation represents the mass balance due to the change of water height of the water column in a certain point. This value should be the discharge that the water column should have. Equations (\ref{ListForm:2}) and (\ref{ListForm:3}) represents the moment balance, and are related to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. This set of equations can be written down on its conserved vector form as follows: 
+The first equation represents the mass balance due to the change of water height of the water column in a certain point, and the last two represent the moment balance due to the change in the discharge with the weight of the eater column, the bathymetry source, and the bottom friction's force, etc. This set of equations can be written down on its conserved vector form as follows: 
 
 $$
-\dt{\q} + \dx{ \f(\q)} + \dy{ \g(\q)} = \S(\q) + \R(\q)
+\frac{\partial \mathbf{q}}{\partial t} + \frac{\partial \mathbf{f}(\mathbf{q}) }{\partial x} + \frac{\partial \mathbf{g}(\mathbf{q}) }{\partial y} = \mathbf{S}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \,,
 $$
 
-Where the previous variables represents: \
+where the previous vector variables are:
 
-\begin{align}
-   \q  &= \left[ h,  hu,  hv \right]^T   		    \\ 
-						  \nonumber \\
-\f(\q) &= \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^T    \\
-						  \nonumber \\
-\g(\q) &= \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^T    \\
-						  \nonumber \\
-\S(\q) &= \left[ 0, -gh \dx{\z}, -gh \dy{\z} \right]^T      \\
-						  \nonumber \\
-\R(\q) &= \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^T 
-\end{align}\
+$$
+\mathbf{q}  = \left[ h,  hu,  hv \right]^\top \,,
+$$
 
-\vspace{2mm}
+$$
+\f(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top \,,
+$$
 
-Where, $\S(\q)$: represents the source term, $\R(\q)$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
+$$
+\g(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top \,,
+$$
+
+$$
+\S(\mathbf{q}) = \left[ 0, -gh \frac{\partial B}{\partial x}}, -gh \frac{\partial B}{\partial y}} \right]^\top \,,
+$$
+
+$$
+\R(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top \,,
+$$
+
+and $$\mathbf{S}(\mathbf{q})$$ represents the source term, $\mathbf{R}(\mathbf{q})$ represents the bottom friction term, and $$n$$ is the Manning's roughness coefficient.
 
 
 ### The Finite Volume Method.
 
 In order to solve the set of equations presented in (\ref{ListForm:1}), (\ref{ListForm:2}), and (\ref{ListForm:3}) the finite volume method will be employed. 
-First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\q) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form: \
+First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\mathbf{q}) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form: \
 
 \begin{align}
-\dt{\q} + \nabla \cdot \overrightarrow{\F}(\q) = \S(\q) + \C(\q) + \R(\q)
+\dt{\mathbf{q}} + \nabla \cdot \overrightarrow{\F}(\mathbf{q}) = \S(\mathbf{q}) + \C(\mathbf{q}) + \R(\mathbf{q})
 \end{align}\
 
 Integrating by part over a finite triangular control volume $\Omega$, we get: \
  
 \begin{align}
-\iint_{\Omega} \dt{\q} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\q) \; d \Omega= \iint_{\Omega} \left( \S(\q) + \C(\q) + \R(\q) \right) \; d \Omega 
+\iint_{\Omega} \dt{\mathbf{q}} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \S(\mathbf{q}) + \C(\mathbf{q}) + \R(\mathbf{q}) \right) \; d \Omega 
 \end{align} 
 
 Applying the Stokes' theorem to a finite triangular element, we obtain: \
 
 \begin{align}
-\dt{\q} \cdot \Omega + \oint_{\Gamma} \F(\q) \cdot \overrightarrow{n} \; d \Gamma = \S(\q) \cdot \Omega + \C(\q) \cdot \Omega + \R(\q) \cdot \Omega
+\dt{\mathbf{q}} \cdot \Omega + \oint_{\Gamma} \F(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \S(\mathbf{q}) \cdot \Omega + \C(\mathbf{q}) \cdot \Omega + \R(\mathbf{q}) \cdot \Omega
 \end{align}
 
-Where, $\Omega$: is the control volume, $\Gamma$: is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $\F(\q)$: is the normal flux to the 
+Where, $\Omega$: is the control volume, $\Gamma$: is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $\F(\mathbf{q})$: is the normal flux to the 
 edge of each side of the control volume. \\
 
 Employing the Euler's method to discretize the temporal variable, we get: \
 
 \begin{align}\label{Euler}
-\q_j^{m+1} = \q_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \F_{jk}(\q^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \S_j(\q^{m})
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \F_{jk}(\mathbf{q}^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \S_j(\mathbf{q}^{m})
 \end{align}\
 
 Where $n_{jk}$: is the normal vector to the $k^{th}$ mid-point side of the $j^{th}$ triangle, $\Delta t$: is the time step, $\Delta \Omega_j$: is the control volume for the $j^{th}$ triangle, 
-$l_{jk}$: is the length of the $k^{th}$ side of the $j^{th}$ triangle, and $\q_j^{m}$: is the vector of conserved variables for the $j^{th}$ triangle at the $m^{th}$ time step. \\
+$l_{jk}$: is the length of the $k^{th}$ side of the $j^{th}$ triangle, and $\mathbf{q}_j^{m}$: is the vector of conserved variables for the $j^{th}$ triangle at the $m^{th}$ time step. \\
 
 Terms such as the bottom friction and Coriolis' force can be incorporated employing a semi-implicit discretization: \
 
 \begin{align}
-\C(\q) + \R(\q) \approx   H(\q^{m+1}) \cdot \q^{m+1}
+\C(\mathbf{q}) + \R(\mathbf{q}) \approx   H(\mathbf{q}^{m+1}) \cdot \mathbf{q}^{m+1}
 \end{align}\
 
 In this regard, the friction and the Coriolis terms can be incorporated correcting the vector of conserved variables: \
 
 \begin{align}\label{eq:update}
-\q_j^{m+1} = \frac{\q_j^{m+1}}{1 + \Delta t \cdot H(\q_j^{m+1})} 
+\mathbf{q}_j^{m+1} = \frac{\mathbf{q}_j^{m+1}}{1 + \Delta t \cdot H(\mathbf{q}_j^{m+1})} 
 \end{align}
 
 ### First--Order Semi--Discrete Central Upwind.
@@ -132,11 +138,11 @@ to obtain the final states of the conserved variables, a single value of bed ele
 \end{align}\
 
 The \emph{First--Order Semi--Discrete Central--Upwind Method} begins by knowing the explicit functions of the conserved variables at the mass center of each triangle 
-at the previous time step, i.e., $\q_j^m$. Then, a piece-wise constant reconstruction will be employed, this is, the conserved variable values at the mid-point of 
+at the previous time step, i.e., $\mathbf{q}_j^m$. Then, a piece-wise constant reconstruction will be employed, this is, the conserved variable values at the mid-point of 
 each side are the same as the mass center. \
 
 \begin{align}\label{eq:Reconstruccion}
-\q_{jk}^{in} = \q_j^{m} 
+\mathbf{q}_{jk}^{in} = \mathbf{q}_j^{m} 
 \end{align}\
 
 The water level surface reconstruction must be so that the water depth has to be always positive; therefore, the reconstructed water depth at the midpoint $h_{jk}$
@@ -207,28 +213,28 @@ a^{out}_{jk} &= -\min \left(w^{in}_{jk} - \sqrt{g \cdot h^{in}_{jk}},w^{out}_{jk
 Once equipped with all the previous quantities, we can evaluate the mid-point conserved variables values at each side: \
 
 \begin{align} \label{eq:FluxFunc} 
-\; \q_{jk}  &= \left[ h_{jk} , hu_{jk}, hv_{jk} \right]^T  \\ 
-\f(\q_{jk}) &= \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^T \\
-\g(\q_{jk}) &= \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^T 
+\; \mathbf{q}_{jk}  &= \left[ h_{jk} , hu_{jk}, hv_{jk} \right]^T  \\ 
+\f(\mathbf{q}_{jk}) &= \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^T \\
+\g(\mathbf{q}_{jk}) &= \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^T 
 \end{align}
 
 The central-upwind scheme \cite{Kurganov_1} for the $j^{th}$ finite control volume $j^{th}$ must fulfill: \
 
 \begin{align}\label{eq:CentralUpwind}
-\q_j^{m+1} = \q_j^{m} & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \f(\q^{out}_{jk}) + 
-			   a_{jk}^{out} \cdot  \f(\q^{in}_{jk}) \Big) \nonumber \\
-                      & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\q^{out}_{jk}) + 
-			   a_{jk}^{out} \cdot  \g(\q^{in}_{jk}) \Big) \\
-                      & + \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \q^{out}_{jk} -\q^{in}_{jk} \Big) + 
-			  \Delta t \; \S_j(\q^{in}_j) \nonumber
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^x}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \f(\mathbf{q}^{out}_{jk}) + 
+			   a_{jk}^{out} \cdot  \f(\mathbf{q}^{in}_{jk}) \Big) \nonumber \\
+                      & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\mathbf{q}^{out}_{jk}) + 
+			   a_{jk}^{out} \cdot  \g(\mathbf{q}^{in}_{jk}) \Big) \\
+                      & + \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \Big) + 
+			  \Delta t \; \S_j(\mathbf{q}^{in}_j) \nonumber
 \end{align}\
 
 In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as 
-$\q = [ C , 0 ,0 ]^T$ the evolution should stay the same. One can observe that when the water is at rest $\q_j = \q_{jk} = [ C , 0 ,0 ]^T$, the one sided propagation 
+$\mathbf{q} = [ C , 0 ,0 ]^T$ the evolution should stay the same. One can observe that when the water is at rest $\mathbf{q}_j = \mathbf{q}_{jk} = [ C , 0 ,0 ]^T$, the one sided propagation 
 speed in equation(\ref{eq:unaDir}) becomes $a_{jk}^{in} = a_{jk}^{out}$, thus the source term becomes: \
 
 \begin{align}\label{eq:Fuente}
-\S_j(\q) &= \left[ \begin{array}{c}
+\S_j(\mathbf{q}) &= \left[ \begin{array}{c}
 		    0 \\
 		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2} \\
 		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2} \\
@@ -283,18 +289,18 @@ The main structure of the program is summarized in algoritm (\ref{alg:CentralUpw
       %\vspace{1.5mm}
       \WHILE {$t \leq t_{max}$}
       %\vspace{1.0mm}
-	  \STATE Piece-wise constant Reconstruction $\q^{(1)} \leftarrow \eta_{jk}$, use (\ref{eq:Reconstruccion})
+	  \STATE Piece-wise constant Reconstruction $\mathbf{q}^{(1)} \leftarrow \eta_{jk}$, use (\ref{eq:Reconstruccion})
 	  \STATE Impose water depth positivity preserving, use (\ref{eq:Profundidad})
-	  \STATE Flux-discharge reconstruction $\q^{(2)} \leftarrow hu_{jk}$, $\q^{(3)} \leftarrow hv_{jk}$, use (\ref{eq:Reconstruccion})
+	  \STATE Flux-discharge reconstruction $\mathbf{q}^{(2)} \leftarrow hu_{jk}$, $\mathbf{q}^{(3)} \leftarrow hv_{jk}$, use (\ref{eq:Reconstruccion})
 	  \STATE Desingularize the velocities $u_{jk}$, $v_{jk}$, use (\ref{eq:Desingularizar_u}), (\ref{eq:Desingularizar_v})
 	  \STATE Re-compute the flux-discharge $hu_{jk}$, $hv_{jk}$, use (\ref{eq:recalculo_u}), (\ref{eq:recalculo_v})
 	  \STATE Compute the one-sided speed velocities $a^{in}_{jk}$, $a^{out}_{jk}$, use (\ref{eq:unaDir})
 	  \STATE Compute the maximum allowed time step $\Delta t$,  use (\ref{eq:DT})
 	  \STATE Evaluate the source term $\S_j$,  use (\ref{eq:Fuente})
 	  \STATE Evaluate the friction term $\R_j$,  use (\ref{eq:Fuente})
-	  \STATE Evaluate the flux functions $\f(\q_{jk})$, $\g(\q_{jk})$, use (\ref{eq:FluxFunc})
-	  \STATE Update the state variables $\q_j$,  use (\ref{eq:CentralUpwind})
-	  \STATE Correct the states variables $\q_j$,  use (\ref{eq:update})
+	  \STATE Evaluate the flux functions $\f(\mathbf{q}_{jk})$, $\g(\mathbf{q}_{jk})$, use (\ref{eq:FluxFunc})
+	  \STATE Update the state variables $\mathbf{q}_j$,  use (\ref{eq:CentralUpwind})
+	  \STATE Correct the states variables $\mathbf{q}_j$,  use (\ref{eq:update})
           \STATE Impose boundary conditions.
 	  %\vspace{1.0mm}
       \ENDWHILE
