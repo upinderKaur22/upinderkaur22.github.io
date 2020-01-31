@@ -5,21 +5,21 @@ description: How to speedup the Shallow Water Equations on Graphic processors.
 img: /assets/img/2.jpg
 ---
 
-This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form \cite{Kurganov_1}, and \cite{Liang}. The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
+This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]], and [[4]]. The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
 here SWE, which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
 
-In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive \cite{Kurganov_1}. 
+In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]]. 
 
-Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see \cite{Bryson_1}, which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level \cite{Bryson_2}, employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
+Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see [[2]], which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level [[3]], employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
 ### Model Definition.
 
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables <img src="https://render.githubusercontent.com/render/math?math=q"> as scalar, while in bold <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q}"> as vectors, i.e., we will have <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = (q_1, q_2, q_3)^\top"> as a vector of conserved variables. 
 
 <div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" height="10px" title="example image"/>
+    <img class="col one left" src="{{ site.baseurl }}/assets/img/Project2/Fig001.png" alt="" height="10px" title="example image"/>
 </div>
-<div class="col three caption">
+<div class="col one caption">
     Main (state) variables used to describe the shallow water equations (SWE).
 </div>
 
@@ -45,15 +45,15 @@ where the previous variables represents:
 
 <img src="https://render.githubusercontent.com/render/math?math=\mathbf{q} = \left[ h,  hu,  hv \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{f}(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{f}(\mathbf{q}) = \left[ hu, hu %2B \frac{1}{2}gh^2, huv \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv %2B \frac{1}{2}gh^2 \right]^\top">
 
 <img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial z}{\partial x}, -gh \frac{\partial z}{\partial y} \right]^\top">
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top">
+<img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}} \right]^\top">
 
-where $\mathbf{S}(\mathbf{q})$: represents the source term, $\mathbf{R}(\mathbf{q})$: represents the bottom friction term, and $n$: is the Manning's roughness coefficient.
+where <img src="https://render.githubusercontent.com/render/math?math=\mathbf{S}(\mathbf{q})">: represents the source term, <img src="https://render.githubusercontent.com/render/math?math=\mathbf{R}(\mathbf{q})">: represents the bottom friction term, and <img src="https://render.githubusercontent.com/render/math?math=n">: is the Manning's roughness coefficient.
 
 ### A Finite Volume Discretization.
 
@@ -66,7 +66,7 @@ Integrating by part over a finite triangular control volume <img src="https://re
 \begin{align}
 \iint_{\Omega} \dt{\q} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\q) \; d \Omega= \iint_{\Omega} \left( \S(\q) + \C(\q) + \R(\q) \right) \; d \Omega 
 \end{align} 
-<img src="https://render.githubusercontent.com/render/math?math=...">
+<img src="https://render.githubusercontent.com/render/math?math=\iint_{\Omega} \dt{\q} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\q) \; d \Omega= \iint_{\Omega} \left( \S(\q) + \C(\q) + \R(\q) \right) \; d \Omega">
 
 Applying the Stokes' theorem to a finite triangular element, we obtain: 
 
@@ -295,3 +295,35 @@ The code is simple. Just add a col class to your image, and another class specif
     <img class="col two left" src="/img/6.jpg"/>
     <img class="col one left" src="/img/11.jpg"/>
 </div>
+
+
+## References
+<a id="1">[1]</a> 
+Bollermann, Andreas and Chen, Guoxian and Kurganov, Alexander and Noelle, Sebastian
+A Well-Balanced Reconstruction of Wet/Dry Fronts for the Shallow Water Equations.
+Journal of Scientific Computing, August 2013, (56) 267--290.	
+
+<a id="1">[2]</a> 
+Bryson, S. and Levy, D.
+Balanced Central Schemes for the Shallow Water Equations on Unstructured Grids. 
+SIAM Journal on Scientific Computing, 2005, (27) 532--552.
+
+<a id="1">[3]</a> 
+Bryson, Steve and Epshteyn, Yekaterina and Kurganov, Alexander and Petrova, Guergana 
+Well-balanced positivity preserving central-upwind scheme on triangular grids for the Saint-Venant system. 
+ESAIM: Mathematical Modelling and Numerical Analysis, 2011, (54) 423--446
+
+<a id="1">[4]</a> 
+Q. Liang
+Flood simulation using a well-balanced shallow flow model.
+Journal of Hydraulic Engineering, 2010, (136) 669--675
+
+<a id="1">[5]</a> 
+E. Audusse and  F. Bouchut and  M. Bristeau and R. Klein and B. Perthame.
+A fast and stable well-balanced scheme with hydrostatic reconstruction for shallow water flows.
+SIAM Journal on Scientific Computing, 2004, (25) 2050--2065
+
+<a id="1">[6]</a> 
+Courant R. and Friedrichs K. and Lewy H.
+textit{On the partial difference equations of mathematical physics.
+IBM Journal of Research and Development, 1967, (11) 215--234
