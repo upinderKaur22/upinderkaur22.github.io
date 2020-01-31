@@ -1,16 +1,15 @@
 ---
 layout: page
-title: A GPU implementation of the Shallow Water Equations.
-description: How to speedup the Shallow Water Equations on Graphic processors.
-img: /assets/img/2.jpg
+title: Project II
+description: A GPU implementation of the Shallow Water Equations.
+img: /assets/img/Project2/Background.png
 ---
 
-This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1) and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the ***Shallow Water Equations***, 
-here SWE, which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
+This project essentially speedup the ***Shallow Water Equations*** (SWE) on Graphic processors (GPU). The numerical implementation of the SWE is taken form [[1]](#1) and [[4]](#4). The chosen method employs a very efficient finite volume algorithm which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
 
 In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]](#1). 
 
-Because of the previous reasons, an improved first-order central-upwind was chosen to be implemented, see [[2]](#2), which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level [[3]](#3), employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
+Because of the previous reasons, an improved first-order central-upwind is chosen, see [[2]](#2), which in contrast to their predecessors, is able to preserve the lake at rest conditions and the positivity water level [[3]](#3), employing a variable time step to increase the convergence in time. Moreover, in order to increase the stability of the method, it is necessary to increase the resolution of the mesh in coastal areas. This is carried out by employing a non-structured mesh. To fulfill these equirements triangular elements were employed.
 
 
 ### Model Definition.
@@ -257,8 +256,9 @@ The defined parameters are: $$H$$ the incident solitary wave height, $$R$$ the r
 
 Here, we have considered a $$80 \; [m]$$ long channel with soft conditions at both ends i.e, $$x = -10 \; [m]$$, and $$x = 70 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e $$y = -5 \; [m]$$, and $$y = 5 \; [m]$$. We use the parameters $$x_0 = 19.85 \; [m]$$, $$x_1 = 37.35 \; [m]$$, $$d = 1.00 \; [m]$$, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. Surface roughness becomes important for runup over harsh slopes and a Manning's coefficient $$n = 0.01$$ describes the surface condition of the smooth glass beach in the laboratory experiments. 
 
-<iframe width="420" height="360" src="https://www.youtube.com/watch?v=j0RL9FwNOV0" frameborder="0" allowfullscreen></iframe>
+The finite volume mesh has $76399$ nodes, $$150772$$ tirangular elements, and $$180$$ ghost cells. The solution is shown in Gmsh in the following youtube video:
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j0RL9FwNOV0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 #### Solitary Wave On A Conical Island.
 The following figure shows a schematic sketch of the experiment. The basin is $$25 \; [m]$$ long and $$30 \; [m]$$ wide. The circular island has the shape of a truncated cone with diameters of $$7.2 \; [m]$$ at the base and $$2.2 \; [m]$$ at the crest. The island is $$0.625 \; [m]$$ high and has a side slope of $$1:4$$. 
@@ -268,10 +268,9 @@ The following figure shows a schematic sketch of the experiment. The basin is $$
 
 Here, we consider a rectangular domain of $$[-17.5,17.5] \times [-6.25,6.25]$$ with soft conditions at both ends i.e., $$x = -17.5 \;[m]$$, and $$x = 17.5 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e., $$y = -6.25 \; [m]$$, and $$y = 6.25 \; [m]$$. We use the parameters $$x_1 = 12.96 \; [m]$$ as the starting point of the wave height, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. The experiment also covers the water depths $$d = 0.32 \; [m]$$  and the solitary wave heights $$H = 0.0144 \; [m]$$. Therefore, the solitary wave is generated from the left boundary, and a Manning's roughness coefficient was set to be $$n = 0.016$$ for the smooth concrete finish.
 
-The animation should look like:
+The finite volume mesh has $$125804$$ nodes, $$249554$$ tirangular elements, and $$392$$ ghost cells. The solution is shown in Gmsh in the following youtube video:
 
-<iframe width="420" height="360" src="https://www.youtube.com/watch?v=DwpGGHFCna8" frameborder="0" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DwpGGHFCna8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ### References
 <a id="1">[1]</a> 
