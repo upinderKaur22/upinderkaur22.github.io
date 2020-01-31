@@ -16,12 +16,8 @@ Because of the previous reasons, an improved first-order central-upwind was chos
 ### Model Definition.
 In this section, it will be defined the main variables that are going to be employed during this document. We will use normal variables $$q$$ as scalar, while in bold $$\mathbf{q}$$ as vectors, i.e., we will have $$\mathbf{q} = (q_1, q_2, q_3)^\top$$ as a vector of conserved variables.  
 
-\begin{figure}[ht] 
-  \centering
-  \includegraphics[scale=0.200]{Fig001.png}  
-  \caption{Main variables of the method.}
-  \label{fig:Fig001}
-\end{figure}
+![image-title-here](/assets/img/Project2/Fig001.png){:class="img-responsive"}{:height="" width="700px"}
+*Figure 1: Main variables (states) of the shallow water equations.*
 
 where the variables represented in the figure are: $$w(x,y,t)$$ the surface elevation,  measured from mean sea level to the water level. $$h(x,y,t)$$ the water depth which is measured from the bed elevation to the water surface. $$u(x,y,t)$$ the velocity field along $$x$$-direction, and $$v(x,y,t)$$ the velocity field along $$y$$-direction. $$B(x,y)$$ represents the bathymetry. It is measured from the mean sea level to the bottom floor. In addition, there are other associated variables $$hu(x,y,t)$$ is the flux-discharge along $$x$$-direction, and $$hv(x,y,t)$$ is the flux-discharge along $$y$$-direction.
 
@@ -118,12 +114,8 @@ $$
 
 The **First--order semi--discrete central--upwind** method is employed to solve the discrete form of the Sallow Water Equations. we use as a reference the scheme depicted in the figure bellow: 
 
-\begin{figure}[ht] 
-  \centering
-  \includegraphics[scale=0.250]{Fig002.png}  
-  \caption{(a) Finite volume mesh, (b) typical control volume and its associated variables.}
-  \label{Fig002}
-\end{figure}
+![image-title-here](/assets/img/Project2/Fig002.png){:class="img-responsive"}{:height="" width="700px"}
+*Figure 2: (a) Finite volume mesh, (b) typical control volume and its associated variables.*
 
 The method starts by defining a piece-wise constant reconstruction of the bathymetry. The mass center value of the elements will be taken as constant over the element. Therefore, a discontinuous values will be provided at each side of the element, this is ``in`` and the ``out`` interface as it is shown in the latter figure. In order  to obtain the final states of the conserved variables, a single value of bed elevation suggested by [[5]](#5) is defined:
 
@@ -145,13 +137,8 @@ $$
 
 It is simple to show that the reconstruction process defined above do not affect the well-balanced property of the numerical scheme when only wet-bed applications are simulated. However, for dry-bed applications, the well-balanced property is violated, see the following figure
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[scale=0.285]{Fig003.png}
-  \caption{(a) The $i^{th}$ wet element shares a common edge with the $j1^{th}$ dry element, and the bed elevation of dry element is higher than the water level at the centroid 
- 	   of the $i^{th}$ element. (b) The difference between the actual and fake water level at midpoint $_{jk}$.}
-  \label{fig:Fig003}
-\end{figure}
+![image-title-here](/assets/img/Project2/Fig003.png){:class="img-responsive"}{:height="" width="700px"}
+*Figure 3: (a) The $$i^{th}$$ wet element shares a common edge with the $$j1^{th}$$ dry element, and the bed elevation of dry element is higher than the water level at the centroid of the $$i^{th}$$ element. (b) The difference between the actual and fake water level at midpoint $$_{jk}$$.*
  
 The fluxes at the interface between element $$i$$ and $$j1$$ are calculated using the bed elevation; however, fluxes at the other two element interfaces are evaluated with the actual water surface elevation $$w^{in}_{jk}$$ in element $$i$$, which drives the flow into motion in the cell $$i$$ and violates the well-balanced property of the scheme. The local bed modification is proposed by [[4]](#4) to tackle this problem. As shown in last figure, the difference between the actual and fake water level at midpoint $$_{jk}$$ is calculated by:
 
@@ -236,21 +223,13 @@ $$
 In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as $$\mathbf{q} = [ C , 0 ,0 ]^\top$$ the evolution should stay the same. One can observe that when the water is at rest $$\mathbf{q}_j = \mathbf{q}_{jk} = [ C , 0 ,0 ]^\top$$, the one sided propagation speed becomes $$a_{jk}^{in} = a_{jk}^{out}$$, thus the source term becomes:
 
 $$
-\mathbf{S}_j(\mathbf{q}) = \left[ \begin{array}{c} 0 \\ \frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2 \\ \frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2 \end{array} \right]
+\mathbf{S}_j(\mathbf{q}) = \left[ \begin{array}{c} 0 \\ \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2} \\ \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2} \end{array} \right]
 $$
 
 The complete process can be clearly understood referencing figure(\ref{fig:Fig004}): 
 
-\begin{figure}[ht] 
-  \centering
-  \includegraphics[scale=0.205]{Fig004.png}  
-  \caption{First--Order Semi--Discrete Central--Upwind Method. (a) Continuous conserved variables, (b) Piece-wise constant reconstruction, (c) Positivity preserving 
-	   reconstruction, (d) Well-balanced reconstruction, (e) Flux-function computation, (f) Conserved variables update.}
-  \label{fig:Fig004}
-\end{figure}
-
 ![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="700px"}
-*First--Order Semi--Discrete Central--Upwind Method. (a) Continuous conserved variables, (b) Piece-wise constant reconstruction, (c) Positivity preserving reconstruction, (d) Well-balanced reconstruction, (e) Flux-function computation, (f) Conserved variables update.*
+*Figure 4: First--Order Semi--Discrete Central--Upwind Method. (a) Continuous conserved variables, (b) Piece-wise constant reconstruction, (c) Positivity preserving reconstruction, (d) Well-balanced reconstruction, (e) Flux-function computation, (f) Conserved variables update.*
 
 In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
 
