@@ -23,13 +23,17 @@ In this section, it will be defined the main variables that are going to be empl
     Main (state) variables used to describe the shallow water equations (SWE).
 </div>
 
-where in the figure <img src="https://render.githubusercontent.com/render/math?math=w(x,y,t)"> Represents the surface elevation. It is measured from mean sea level to the water level, <img src="https://render.githubusercontent.com/render/math?math=h(x,y,t)"> Represents the water depth. It is measured from the bed elevation to the water surface,  <img src="https://render.githubusercontent.com/render/math?math=u(x,y,t)"> Represents the velocity field along x-direction, <img src="https://render.githubusercontent.com/render/math?math=v(x,y,t)">  Represents the velocity field along y-direction, and <img src="https://render.githubusercontent.com/render/math?math=B(x,y)"> Represents the bathymetry. It is measured from the mean sea level to the bottom floor. Note that the associated variables  <img src="https://render.githubusercontent.com/render/math?math=hu(x,y,t)"> and <img src="https://render.githubusercontent.com/render/math?math=hv(x,y,t)"> Represents the flux-discharge along x and y direction respectively.
+where in the figure $$w(x,y,t)$$ <img src="https://render.githubusercontent.com/render/math?math=w(x,y,t)"> Represents the surface elevation. It is measured from mean sea level to the water level, <img src="https://render.githubusercontent.com/render/math?math=h(x,y,t)"> Represents the water depth. It is measured from the bed elevation to the water surface,  <img src="https://render.githubusercontent.com/render/math?math=u(x,y,t)"> Represents the velocity field along x-direction, <img src="https://render.githubusercontent.com/render/math?math=v(x,y,t)">  Represents the velocity field along y-direction, and <img src="https://render.githubusercontent.com/render/math?math=B(x,y)"> Represents the bathymetry. It is measured from the mean sea level to the bottom floor. Note that the associated variables  <img src="https://render.githubusercontent.com/render/math?math=hu(x,y,t)"> and <img src="https://render.githubusercontent.com/render/math?math=hv(x,y,t)"> Represents the flux-discharge along x and y direction respectively.
 
 ### The Shallow Water Equations.
 
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. In this regard, a system of bi-dimensional equations is obtained, in which the horizontal velocities represents an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 <img src="https://render.githubusercontent.com/render/math?math=h_t %2B (hu)_x %2B (hv)_y = 0" height="20px">
+
+$$
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \mathbf{F}_{jk}(\mathbf{q}^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \mathbf{S}_j(\mathbf{q}^{m})
+$$
 
 <img src="https://render.githubusercontent.com/render/math?math=(hu)_t %2B \left(hu^2 %2B \frac{1}{2} g h^2 \right)_x %2B (huv)_y = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 %2B (hv)^2}}{h^{7/3}}" height="35px">
 

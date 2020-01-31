@@ -1,7 +1,7 @@
 ---
 layout: about
 permalink: /
-title: <strong>Danilo S.</strong> Kusanovic
+title: <strong>Danilo</strong> S. Kusanovic
 description: <a href="https://www.asimaki.caltech.edu/">Asimaki's Group</a>. <a href="https://github.com/dankusanovic">GitHub page</a>. <a href="https://www.google.com/maps/place/Caltech,+Gates-Thomas+building/@34.1368233,-118.1241685,18z/data=!4m5!3m4!1s0x80c2c4a7dc55fc89:0xe18c273324110915!8m2!3d34.1371131!4d-118.1245179">Address</a>. 
 
 profile:
