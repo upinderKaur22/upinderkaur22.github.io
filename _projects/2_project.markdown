@@ -54,68 +54,65 @@ $$
 $$
 
 $$
-\f(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top \,,
+\mathbf{f}(\mathbf{q}) = \left[ hu, hu + \frac{1}{2}gh^2, huv \right]^\top \,,
 $$
 
 $$
-\g(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top \,,
+\mathbf{g}(\mathbf{q}) = \left[ hv, huv, hv + \frac{1}{2}gh^2 \right]^\top \,,
 $$
 
 $$
-\S(\mathbf{q}) = \left[ 0, -gh \frac{\partial B}{\partial x}}, -gh \frac{\partial B}{\partial y}} \right]^\top \,,
+\mathbf{S}(\mathbf{q}) = \left[ 0, -gh \frac{\partial B}{\partial x}}, -gh \frac{\partial B}{\partial y}} \right]^\top \,,
 $$
 
 $$
-\R(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top \,,
+\mathbf{R}(\mathbf{q}) = \left[ 0, g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}, g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \right]^\top \,,
 $$
 
-and $$\mathbf{S}(\mathbf{q})$$ represents the source term, $\mathbf{R}(\mathbf{q})$ represents the bottom friction term, and $$n$$ is the Manning's roughness coefficient.
+and $$\mathbf{S}(\mathbf{q})$$ represents the source term, $$\mathbf{R}(\mathbf{q})$$ represents the bottom friction term, and $$n$$ is the Manning's roughness coefficient.
 
 
 ### The Finite Volume Method.
 
-In order to solve the set of equations presented in (\ref{ListForm:1}), (\ref{ListForm:2}), and (\ref{ListForm:3}) the finite volume method will be employed. 
-First, the flux-field will be written in its vector form as: $\overrightarrow{\F}(\mathbf{q}) = (\f,\g)$. Then, equation (\ref{VecForm}) will take the form: \
+The finite volume method is employed in order to solve the SWE. First, the flux-field will be written in its vector form as: $$\overrightarrow{\mathbf{F}}(\mathbf{q}) = (\mathbf{f},\mathbf{g})$$. Then, we have
 
-\begin{align}
-\dt{\mathbf{q}} + \nabla \cdot \overrightarrow{\F}(\mathbf{q}) = \S(\mathbf{q}) + \C(\mathbf{q}) + \R(\mathbf{q})
-\end{align}\
+$$
+\frac{\partial \mathbf{q}}{\partial t}} + \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) = \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \,.
+$$
 
-Integrating by part over a finite triangular control volume $\Omega$, we get: \
+Integrating by part over a finite triangular control volume $$\Omega$$, we get: 
  
-\begin{align}
-\iint_{\Omega} \dt{\mathbf{q}} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\F}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \S(\mathbf{q}) + \C(\mathbf{q}) + \R(\mathbf{q}) \right) \; d \Omega 
-\end{align} 
+$$
+\iint_{\Omega} \frac{\partial \mathbf{q}}{\partial t}} \; d \Omega + \iint_{\Omega} \nabla \cdot \overrightarrow{\mathbf{F}}(\mathbf{q}) \; d \Omega= \iint_{\Omega} \left( \mathbf{S}(\mathbf{q}) + \mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \right) \; d \Omega \,.
+$$
 
 Applying the Stokes' theorem to a finite triangular element, we obtain: \
 
-\begin{align}
-\dt{\mathbf{q}} \cdot \Omega + \oint_{\Gamma} \F(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \S(\mathbf{q}) \cdot \Omega + \C(\mathbf{q}) \cdot \Omega + \R(\mathbf{q}) \cdot \Omega
-\end{align}
+$$
+\frac{\partial \mathbf{q}}{\partial t}} \cdot \Omega + \oint_{\Gamma} \mathbf{F}(\mathbf{q}) \cdot \overrightarrow{n} \; d \Gamma = \mathbf{S}(\mathbf{q}) \cdot \Omega + \mathbf{C}(\mathbf{q}) \cdot \Omega + \mathbf{R}(\mathbf{q}) \cdot \Omega \,,
+$$
 
-Where, $\Omega$: is the control volume, $\Gamma$: is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $\F(\mathbf{q})$: is the normal flux to the 
-edge of each side of the control volume. \\
+where $$\Omega$$ is the control volume, $$\Gamma$$ is the boundary of the control volume, $\overrightarrow{n}$: is the normal vector to the side, and $$\mathbf{F}(\mathbf{q})$$: is the normal flux to the edge of each side of the control volume. 
 
-Employing the Euler's method to discretize the temporal variable, we get: \
+Employing the Euler's method to discretize the temporal variable, we get:
 
-\begin{align}\label{Euler}
-\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \F_{jk}(\mathbf{q}^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \S_j(\mathbf{q}^{m})
-\end{align}\
+$$
+\mathbf{q}_j^{m+1} = \mathbf{q}_j^{m} - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \mathbf{F}_{jk}(\mathbf{q}^{m}) \cdot n_{jk} \cdot l_{jk} + \Delta t \cdot \mathbf{S}_j(\mathbf{q}^{m}) \,,
+$$
 
-Where $n_{jk}$: is the normal vector to the $k^{th}$ mid-point side of the $j^{th}$ triangle, $\Delta t$: is the time step, $\Delta \Omega_j$: is the control volume for the $j^{th}$ triangle, 
-$l_{jk}$: is the length of the $k^{th}$ side of the $j^{th}$ triangle, and $\mathbf{q}_j^{m}$: is the vector of conserved variables for the $j^{th}$ triangle at the $m^{th}$ time step. \\
+where $$n_{jk}$$ is the normal vector to the $$k^{th}$$ mid-point side of the $$j^{th}$$ triangle, $$\Delta t$$ is the time step, $$\Delta \Omega_j$$ is the control volume for the $$j^{th}$$ triangle, $$l_{jk}$$ is the length of the $$k^{th}$$ side of the $$j^{th}$$ triangle, and $$\mathbf{q}_j^{m}$$ is the vector of conserved variables for the $$j^{th}$$ triangle at the $$m^{th}$$ time step.
 
-Terms such as the bottom friction and Coriolis' force can be incorporated employing a semi-implicit discretization: \
+Terms such as the bottom friction and Coriolis' force can be incorporated employing a semi-implicit discretization: 
 
-\begin{align}
-\C(\mathbf{q}) + \R(\mathbf{q}) \approx   H(\mathbf{q}^{m+1}) \cdot \mathbf{q}^{m+1}
-\end{align}\
+$$
+\mathbf{C}(\mathbf{q}) + \mathbf{R}(\mathbf{q}) \approx  H(\mathbf{q}^{m+1}) \cdot \mathbf{q}^{m+1}
+$$
 
-In this regard, the friction and the Coriolis terms can be incorporated correcting the vector of conserved variables: \
+In this regard, the friction and the Coriolis terms can be incorporated correcting the vector of conserved variables: 
 
-\begin{align}\label{eq:update}
+$$
 \mathbf{q}_j^{m+1} = \frac{\mathbf{q}_j^{m+1}}{1 + \Delta t \cdot H(\mathbf{q}_j^{m+1})} 
-\end{align}
+$$
 
 ### First--Order Semi--Discrete Central Upwind.
 
@@ -214,7 +211,7 @@ Once equipped with all the previous quantities, we can evaluate the mid-point co
 
 \begin{align} \label{eq:FluxFunc} 
 \; \mathbf{q}_{jk}  &= \left[ h_{jk} , hu_{jk}, hv_{jk} \right]^T  \\ 
-\f(\mathbf{q}_{jk}) &= \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^T \\
+\mathbf{f}(\mathbf{q}_{jk}) &= \left[ hu_{jk}, hu_{jk} + \frac{1}{2}g \, h_{jk}^2, hu_{jk} \cdot v_{jk} \right]^T \\
 \g(\mathbf{q}_{jk}) &= \left[ hv_{jk}, hu_{jk} \cdot v_{jk}, hv_{jk} + \frac{1}{2}g \, h_{jk}^2 \right]^T 
 \end{align}
 
@@ -226,7 +223,7 @@ The central-upwind scheme \cite{Kurganov_1} for the $j^{th}$ finite control volu
                       & - \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} \frac{l_{jk} \cdot n_{jk}^y}{a_{jk}^{in} + a_{jk}^{out}} \Big( a_{jk}^{in} \cdot \g(\mathbf{q}^{out}_{jk}) + 
 			   a_{jk}^{out} \cdot  \g(\mathbf{q}^{in}_{jk}) \Big) \\
                       & + \frac{\Delta t}{\Delta \Omega_j} \sum_{k=1}^{3} l_{jk} \frac{ a_{jk}^{in} \cdot a_{jk}^{out}}{a_{jk}^{in} + a_{jk}^{out}} \Big( \mathbf{q}^{out}_{jk} -\mathbf{q}^{in}_{jk} \Big) + 
-			  \Delta t \; \S_j(\mathbf{q}^{in}_j) \nonumber
+			  \Delta t \; \mathbf{S}_j(\mathbf{q}^{in}_j) \nonumber
 \end{align}\
 
 In order to guarantee the well-balanced property, the source term must cancel all the flux terms when the lake is at rest, this means that for a given condition as 
@@ -234,7 +231,7 @@ $\mathbf{q} = [ C , 0 ,0 ]^T$ the evolution should stay the same. One can observ
 speed in equation(\ref{eq:unaDir}) becomes $a_{jk}^{in} = a_{jk}^{out}$, thus the source term becomes: \
 
 \begin{align}\label{eq:Fuente}
-\S_j(\mathbf{q}) &= \left[ \begin{array}{c}
+\mathbf{S}_j(\mathbf{q}) &= \left[ \begin{array}{c}
 		    0 \\
 		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^x \left(w^{in}_{jk} - B_{jk} \right)^2} \\
 		    \displaystyle{\frac{g}{2 \cdot \Omega_j} \sum_{k=1}^{3} l_{jk} \cdot n_{jk}^y \left(w^{in}_{jk} - B_{jk} \right)^2} \\
@@ -296,9 +293,9 @@ The main structure of the program is summarized in algoritm (\ref{alg:CentralUpw
 	  \STATE Re-compute the flux-discharge $hu_{jk}$, $hv_{jk}$, use (\ref{eq:recalculo_u}), (\ref{eq:recalculo_v})
 	  \STATE Compute the one-sided speed velocities $a^{in}_{jk}$, $a^{out}_{jk}$, use (\ref{eq:unaDir})
 	  \STATE Compute the maximum allowed time step $\Delta t$,  use (\ref{eq:DT})
-	  \STATE Evaluate the source term $\S_j$,  use (\ref{eq:Fuente})
+	  \STATE Evaluate the source term $\mathbf{S}_j$,  use (\ref{eq:Fuente})
 	  \STATE Evaluate the friction term $\R_j$,  use (\ref{eq:Fuente})
-	  \STATE Evaluate the flux functions $\f(\mathbf{q}_{jk})$, $\g(\mathbf{q}_{jk})$, use (\ref{eq:FluxFunc})
+	  \STATE Evaluate the flux functions $\mathbf{f}(\mathbf{q}_{jk})$, $\g(\mathbf{q}_{jk})$, use (\ref{eq:FluxFunc})
 	  \STATE Update the state variables $\mathbf{q}_j$,  use (\ref{eq:CentralUpwind})
 	  \STATE Correct the states variables $\mathbf{q}_j$,  use (\ref{eq:update})
           \STATE Impose boundary conditions.
@@ -310,7 +307,7 @@ The main structure of the program is summarized in algoritm (\ref{alg:CentralUpw
 
 ### Numerical Examples.
 
-\subsection*{Solitary Wave On A Simple Beach}
+#### Solitary Wave On A Simple Beach.
 Figure(\ref{fig:Fig005}) provides a schematic of the experiments indicating the parameters employed:
 
 \begin{figure}[!ht]
@@ -347,7 +344,7 @@ The animation should look like:
     \label{fig:fig407_02}
 \end{figure}
 
-\subsection*{Solitary Wave On A Conical Island}
+#### Solitary Wave On A Conical Island.
 Figure(\ref{fig:Fig006}) shows a schematic sketch of the experiment. The basin is $25 \; [m]$ long and $30 \; [m]$ wide. The circular 
 island has the shape of a truncated cone with diameters of $7.2 \; [m]$ at the base and $2.2 \; [m]$ at the crest. The island is $0.625 \; [m]$ high 
 and has a side slope of $1:4$. \\
