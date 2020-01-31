@@ -5,7 +5,7 @@ description: How to speedup the Shallow Water Equations on Graphic processors.
 img: /assets/img/2.jpg
 ---
 
-This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1), and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
+This project is  basically a numerical implementation on GPU of the Shallow Water Equation taken form [[1]](#1) and [[4]](#4). The chosen method employs a very efficient finite volume algorithm for the numerical solution of the \emph{Shallow Water Equations}, 
 here SWE, which has not only the characteristic to be robust, and accurate, but also it is implemented in non-structured triangular mesh.
 
 In general, method that solves the SWE must fulfill both the well-balanced property (this means must not generate synthetic perturbations for lake at rest conditions), and must preserve the positivity preserving property for the water depth, this means the water column must be always positive [[1]](#1). 
@@ -24,14 +24,15 @@ In this section, it will be defined the main variables that are going to be empl
 \end{figure}
 
 where the variables represented in the figure are: $$w(x,y,t)$$ the surface elevation,  measured from mean sea level to the water level. $$h(x,y,t)$$ the water depth which is measured from the bed elevation to the water surface. $$u(x,y,t)$$ the velocity field along $$x$$-direction, and $$v(x,y,t)$$ the velocity field along $$y$$-direction. $$B(x,y)$$ represents the bathymetry. It is measured from the mean sea level to the bottom floor. In addition, there are other associated variables $$hu(x,y,t)$$ is the flux-discharge along $$x$$-direction, [$$m^2/s$$], and $$hv(x,y,t)$$ is the flux-discharge along $$y$$-direction, [$$m^2/s$$].
-\end{itemize}
 
 ### The Shallow Water Equations.
 
 Assuming hydrostatic pressure condition, the SWE are obtained by integrating the Navier-Stokes equations over the water depth. A system of bi-dimensional equations is obtained, where the horizontal velocities are an average of the velocity along the water column. Neglecting the kinematic and turbulent terms, the SWE can be written as: 
 
 $$
-h_t + (hu)_x + (hv)_y = 0
+h_t + (hu)_x + (hv)_y = 0 \\
+(hu)_t + \left(hu^2 + \frac{1}{2} g h^2 \right)_x + (huv)_y    = -g h \z_x - g n^2 \frac{(hu) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}} \\
+(hv)_t + (huv)_x  + \left( hv^2 + \frac{1}{2} g h^2 \right)_y  = -g h \z_y - g n^2 \frac{(hv) \sqrt{(hu)^2 + (hv)^2}}{h^{7/3}}
 $$
 
 $$ 
