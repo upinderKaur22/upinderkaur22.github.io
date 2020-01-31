@@ -249,7 +249,7 @@ The complete process can be clearly understood referencing figure(\ref{fig:Fig00
   \label{fig:Fig004}
 \end{figure}
 
-![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}
+![image-title-here](/assets/img/Project2/Fig004.png){:class="img-responsive"}{:height="" width="400px"}
 
 In order to increase the stability in time domain, the time step should be carefully chosen employing the Courant--Friedrichs--Lewy (CFL) condition, see [[6]](#6):
 
