@@ -8,9 +8,9 @@ profile:
   align: right
   image: prof_pic.jpg
   address: >
-    <p>B103 Gate-Thomas</p>
-    <p>1200 E California Blvd</p>
-    <p>Pasadena, CA 91125</p>
+    <p align="center"><small><span style="color:blue">B103 Gate-Thomas</span></small></p>
+    <p align="center"><small><span style="color:blue">1200 E California Blvd</span></small></p>
+    <p align="center"><small><span style="color:blue">Pasadena, CA 91125</span></small></p>
 
 news: true
 social: true
