@@ -163,7 +163,7 @@ $$
 v^{in}_{jk} = \frac{\sqrt{2} \cdot h^{in}_{jk} \cdot hv^{in}_{jk}}{\sqrt{(h^{in}_{jk})^4 + max((h^{in}_{jk})^4,Tol)}} 
 $$
 
-The flux-discharge must be re-computed due to modifications performed to $u$ and $v$ velocities: 
+The flux-discharge must be re-computed due to modifications performed to $$u$$ and $$v$$ velocities: 
 
 $$
 hu^{in}_{jk} = h^{in}_{jk} \cdot u^{in}_{jk} \,,
@@ -256,7 +256,7 @@ The defined parameters are: $$H$$ the incident solitary wave height, $$R$$ the r
 
 Here, we have considered a $$80 \; [m]$$ long channel with soft conditions at both ends i.e, $$x = -10 \; [m]$$, and $$x = 70 \; [m]$$. Periodic condition were applied for the upper and lower boundaries i.e $$y = -5 \; [m]$$, and $$y = 5 \; [m]$$. We use the parameters $$x_0 = 19.85 \; [m]$$, $$x_1 = 37.35 \; [m]$$, $$d = 1.00 \; [m]$$, the gravitational constant was taken as $$g = 9.80 \; [m/s^2]$$. Surface roughness becomes important for runup over harsh slopes and a Manning's coefficient $$n = 0.01$$ describes the surface condition of the smooth glass beach in the laboratory experiments. 
 
-The finite volume mesh has $76399$ nodes, $$150772$$ tirangular elements, and $$180$$ ghost cells. The solution is shown in Gmsh in the following youtube video:
+The finite volume mesh has $$76399$$ nodes, $$150772$$ tirangular elements, and $$180$$ ghost cells. The solution is shown in Gmsh in the following youtube video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j0RL9FwNOV0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

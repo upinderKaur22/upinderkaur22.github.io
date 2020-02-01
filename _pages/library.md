@@ -2,49 +2,59 @@
 layout: page
 permalink: /library/
 title: Library
-description: The following are a list of books (by topics) I have found very usefull.
+description: The following are a list of books (by topics) I have found very usefull over the course of my career.
 ---
 
-### Data Assimilation.
+### Continuum Mechanics:
 <figure>
-    <a href="https://www.amazon.com/Data-Assimilation-Ensemble-Kalman-Filter/dp/3642037100">
-    <img src="/assets/img/Books/Data2.jpg" alt="alt text" width="" height="250px">
+    <a href="https://www.cambridge.org/core/books/continuum-mechanics-and-thermodynamics/5238FDB769C97E9DAF96F581652BF5EA">
+    <img src="/assets/img/Books/Tadmor.jpg" alt="alt text" width="" height="250px">
     </a>
-    <a href="https://www.amazon.com/Data-Assimilation-Mathematical-Introduction-Mathematics/dp/331920324X/ref=sr_1_1?keywords=data+assimilation+stuart&qid=1580521273&s=books&sr=1-1">
-    <img src="/assets/img/Books/Data1.jpg" href="" alt="alt text" width="" height="250px">
-    </a>
-    <a href="https://www.amazon.com/Optimal-State-Estimation-Nonlinear-Approaches/dp/0471708585/ref=sr_1_1?crid=3GM8GURGR4X1T&keywords=optimal+control+and+estimation+simon&qid=1580521836&s=books&sprefix=optimal%2Cstripbooks%2C235&sr=1-1">
-    <img src="/assets/img/Books/optimal.jpg" href="" alt="alt text" width="" height="250px">
+    <a href="https://www.cambridge.org/us/academic/subjects/mathematics/fluid-dynamics-and-solid-mechanics/first-course-continuum-mechanics?format=PB">
+    <img src="/assets/img/Books/continuum.jpg" href="" alt="alt text" width="" height="250px">
     </a>
 </figure>
 
-### Finite Element Method.
+### Finite Element Method:
 <figure>
     <a href="https://www.amazon.com/Finite-Element-Procedures-K-J-Bathe/dp/097900490X">
     <img src="/assets/img/Books/FEM.jpg" alt="alt text" width="" height="250px">
     </a>
-    <a href="https://www.amazon.com/Plasticity-Modeling-Computation-Ronaldo-Borja/dp/364238546X/ref=sr_1_1?keywords=plasticity+borja&qid=1580521248&s=books&sr=1-1">
+    <a href="https://www.springer.com/gp/book/9783642385469">
     <img src="/assets/img/Books/Plasticity.jpg" href="" alt="alt text" width="" height="250px">
     </a>
 </figure>
 
-### Numerical Analysis.
+### Numerical Analysis:
 <figure>
-    <a href="https://www.amazon.com/Numerical-Mathematics-Texts-Applied/dp/3540346589/ref=sr_1_1?keywords=numerical+mathematics+quarteroni&qid=1580521965&s=books&sr=1-1">
+    <a href="https://www.springer.com/gp/book/9783540346586">
     <img src="/assets/img/Books/NumericalMath.jpg" alt="alt text" width="" height="250px">
     </a>
-    <a href="https://www.amazon.com/Theoretical-Numerical-Analysis-Functional-Mathematics/dp/1441904573/ref=sr_1_1?crid=2FF5IBN0QN69W&keywords=theoretical+numerical+analysis&qid=1580521931&s=books&sprefix=theoretical+numerical+%2Cstripbooks%2C192&sr=1-1">
+    <a href="https://www.springer.com/gp/book/9781441904577">
     <img src="/assets/img/Books/NAnalysis.jpg" href="" alt="alt text" width="" height="250px">
     </a>
 </figure>
 
-### Computer Sciences.
+### Computer Sciences:
 <figure>
-    <a href="">
+    <a href="http://www.stroustrup.com/4th.html">
     <img src="/assets/img/Books/cpp.jpg" alt="alt text" width="" height="250px">
     </a>
-    <a href="">
+    <a href="https://www.oreilly.com/library/view/fundamentals-of-computer/9781482229417/">
     <img src="/assets/img/Books/graphics.jpg" href="" alt="alt text" width="" height="250px">
+    </a>
+</figure>
+
+### Data Assimilation:
+<figure>
+    <a href="https://www.springer.com/gp/book/9783642037108">
+    <img src="/assets/img/Books/Data2.jpg" alt="alt text" width="" height="250px">
+    </a>
+    <a href="https://www.springer.com/gp/book/9783319203249">
+    <img src="/assets/img/Books/Data1.jpg" href="" alt="alt text" width="" height="250px">
+    </a>
+    <a href="https://www.wiley.com/en-us/Optimal+State+Estimation%3A+Kalman%2C+H+Infinity%2C+and+Nonlinear+Approaches-p-9780471708582">
+    <img src="/assets/img/Books/optimal.jpg" href="" alt="alt text" width="" height="250px">
     </a>
 </figure>
 
