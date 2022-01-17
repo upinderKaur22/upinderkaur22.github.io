@@ -8,7 +8,7 @@ middle_name:
 last_name: Kaur
 email: kauru@purdue.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Upinder's page.
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -56,7 +56,7 @@ github_username: upinderkaur22 # your GitHub user name
 #gitlab_username: # your GitLab user name
 twitter_username: UpinderKU # your Twitter handle
 linkedin_username: upinder-kaur-96779859 # your LinkedIn user name
-scholar_userid: # your Google Scholar ID
+scholar_userid: R4Mmu10AAAAJ # your Google Scholar ID
 orcid_id: # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
@@ -66,7 +66,7 @@ blogger_url: # your blogger URL
 work_url: # work page URL
 keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
-dblp_url: # your DBLP profile url
+dblp_url: https://dblp.org/pid/78/5677.html # your DBLP profile url
 stackoverflow_id: #your stackoverflow id
 
 rss_icon: false
@@ -80,8 +80,8 @@ panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio  # your blog must have a name for it to show up in the nav bar
-blog_description: a simple whitespace theme for academics
+blog_name: Research  # your blog must have a name for it to show up in the nav bar
+blog_description: 
 permalink: /blog/:year/:title/
 
 # Pagination
