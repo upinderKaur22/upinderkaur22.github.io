@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: * Robotics * Cyber Physical Systems * Artificial Intelligence 
+subtitle:  Robotics  Cyber Physical Systems  Artificial Intelligence 
 
 profile:
   align: right
