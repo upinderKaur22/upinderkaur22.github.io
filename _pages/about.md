@@ -2,8 +2,8 @@
 layout: about
 title: about
 permalink: /
-subtitle:  <ul style="list-style-type:disc"> <li>Robotics</li><li> Cyber Physical Systems</li><li> Artificial Intelligence </li></ul> 
-           ul { display:inline-block; padding:0; text-align:center }
+subtitle:  <ul class= "horizontal",style="list-style-type:disc"> <li>Robotics</li><li> Cyber Physical Systems</li><li> Artificial Intelligence </li></ul> 
+          
 
 profile:
   align: right
