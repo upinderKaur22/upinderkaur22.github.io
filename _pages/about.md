@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle:  <ul class="horizontal"> <li>Robotics</li><li> Cyber Physical Systems</li><li> Artificial Intelligence </li></ul> 
+subtitle:  <ul class="dotsbetween"><li>Robotics</li><li>Cyber Physical Systems</li><li>Artificial Intelligence</li></ul> 
           
 
 profile:
