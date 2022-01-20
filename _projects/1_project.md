@@ -1,8 +1,8 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: assets/img/12.jpg
+title: Closed-Loop Cyber Physical System for Precision Animal Agriculture
+description: 
+img: 
 importance: 1
 category: work
 ---
