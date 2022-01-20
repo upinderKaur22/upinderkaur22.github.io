@@ -4,13 +4,14 @@ permalink: /publications/
 title: publications
 description: publications by categories in reversed chronological order.
 years: [2022,2021,2020]
+type: [Book Chapters,Conferences and Workshops,Journals]
 nav: true
 ---
 <!-- _pages/publications.md -->
 <div class="publications">
 
-{%- for y in page.years %}
-  <h2 class="year">{{y}}</h2>
+{%- for y in page.type %}
+  <h2 class="type">{{y}}</h2>
   {% bibliography -f papers -q @*[year={{y}}]* %}
 {% endfor %}
 
