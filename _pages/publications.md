@@ -12,7 +12,7 @@ nav: true
 
 {%- for y in page.type %}
   <h2 class="type">{{y}}</h2>
-  {% bibliography -f papers -q @*[year={{y}}]* %}
+  {% bibliography -f papers -q @*[type={{y}}]* %}
 {% endfor %}
 
 </div>
