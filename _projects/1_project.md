@@ -2,7 +2,7 @@
 layout: page
 title: Closed-Loop Cyber Physical System for Precision Animal Agriculture
 description: 
-img: 
+img: /assets/img/cpss.jpg
 importance: 1
 category: work
 ---
