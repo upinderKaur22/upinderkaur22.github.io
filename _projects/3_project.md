@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Learning Contact Intensive Tasks Using Multimodal Preception and Reinforcement Learning
-description: Learning Multimodal Skills using reinforcement learning
+description: Learning multimodal contact-rich skills using reinforcement learning
 img: assets/img/overview_ral.jpg
 importance: 2
 category: work
