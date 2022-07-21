@@ -27,7 +27,7 @@ Addresing these challenges we built the closed-loop cyber-physical system for pr
 The initial step in building the network was characterizing the communication from inside the body of the animal to the outside. We conducted the seminal study for identifying the optimal freqeuncy for RF-based wireless communication. The setup is shown in the figure below. The full paper is available <a href="https://ieeexplore.ieee.org/abstract/document/9629743"> here</a>. 
 
 Book Chapter
-<a href="https://www.academia.edu/download/67422528/Improving_Animal_Welfare_A_Practical_Approach_3rd_Edition_Booksvets.blogspot.com_.pdf#page=571"> Future of Animal Welfare: Technological Innovations for Individualized Animal Care <\a>.
+<a href="https://www.academia.edu/download/67422528/Improving_Animal_Welfare_A_Practical_Approach_3rd_Edition_Booksvets.blogspot.com_.pdf#page=571"> Future of Animal Welfare: Technological Innovations for Individualized Animal Care<\a>.
 
 Invited Reviews 
 <a href="https://www.sciencedirect.com/science/article/pii/S0022030222003502">Invited review: Sensor technologies for real-time monitoring of the rumen environment</a>.
