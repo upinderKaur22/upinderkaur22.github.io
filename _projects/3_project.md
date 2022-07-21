@@ -25,7 +25,7 @@ Teaching robots contact-intesive tasks, such as peeling, scooping, and writing, 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/setup_main.pmg" title="The experimental Setup" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/setup_main.png" title="The experimental Setup" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
         {% include figure.html path="assets/img/writing_training_and_final.png" title="Writig Task" class="img-fluid rounded z-depth-1" %}
