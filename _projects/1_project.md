@@ -2,73 +2,29 @@
 layout: page
 title: Closed-Loop Cyber-Physical System for Precision Animal Agriculture
 description: 
-img: /assets/img/cpss.jpg
+img: /assets/img/cps_overview.jpg
 importance: 1
 category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
-
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/cpss.jpg" title="Closed-Loop CPS Architecture " class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/cps_overview.jpg" title="Closed-Loop Cyber-Physical System for Precision Animal Agriculture " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    The Closed-loop CPS architecture that ties together individual, herd, and farm level monitoring and decision-making.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+    
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
+Feeding a global population of 10 Billion by 2050 is a major challenge facing humanity! As nations get welthier and urbanized, the consumption of animal-derived products, such as meat and dairy, increases. In the face of decreasing land and water availability as well increasing concern for ethical treatment of animals, boosting productivity and sustainability of agriculture is a the problem I undertake in this work. 
 
+Research indicates that boosting animal welfare can increase the productivity of current livetsock operations. Precision animal agriculture or precision livestock farming (PLF), as a movement, encourages returning to the "per animal approach", wherein care is customized acording to the needs of individuals rather than aggregates taken for the whole herd. Since commercial farms today have more than 10,000 animals, it is impossible to care for individuals manually. Therefore, we build technological solutions to address the needs and concerns of animal agriculture, in general, and dairy farming, in particular.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+Cyber physical systems have proven their mettle in crop agriculture by delivering increased productivity, real-time care, and optimized use of resources. However, animal agriculture is a much greater challenge. Each individual is a valuable, sentient being with autonomy of movement and behvior unlike crops. While it takes weeks to months for chnages to precipitate in crops, animal heath can change in a matter of hours. Animals not only have individuality but are social beings too. Therefore, the dynamics of the herd plays a major role in their overall wellbeing.
+
+Addresing these challenges we built the closed-loop cyber-physical system for precision animal agriculture, with an emphasis on dairy farming. The publications on various subcomponents and the reviews on literature are listed below. 
 
 
 The code is simple.
 Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
 
-{% raw %}
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-```
-{% endraw %}
