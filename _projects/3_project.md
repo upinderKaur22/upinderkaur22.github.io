@@ -1,39 +1,23 @@
 ---
 layout: page
-title: Reinforcement Learning for Multimodal Tasks
+title: Learning Contact Intensive Tasks Using Multimodal Preception and Reinforcement Learning
 description: Learning Multimodal Skills using reinforcement learning
-img: assets/img/7.jpg
-redirect: https://unsplash.com
-importance: 3
+img: assets/img/overview_ral.jpg
+importance: 2
 category: work
 ---
+Humans effectively manipulate deformable objects by leveraging their multimodal perception for everydays tasks such opening bags or candy and finding keys in pockets. Teaching such tasks to robots is a non-trivial problem. 
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+For enabling robots to learn multimodal manipulation, especillay for deformable objects, we built a human-like exploration and purposeful manipulation framework. The framework, as shown in Figure 1, allows robots to learn and adapt to a class of deformable objects, autonomously. Further, it enables robots to purposefully manipulate the objects, by levergaing the knowledge base created during the exploration stage, to complete a task. Please refer our paper for more details. 
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/overview_ral.jpg" title="The Multimodal Perception Framework" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    The multimodal perception framework learns a Ziplock bags during exploratory manipulation by building a knowledge base of multimodal represnetations. The knowledge base is then used to comleplte the task of closing the bag during purposeful manipulation.
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
