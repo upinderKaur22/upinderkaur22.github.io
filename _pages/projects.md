@@ -37,20 +37,9 @@ horizontal: true
   {% endfor %}
 
 {%- else -%}
-  <!-- Display projects without categories -->
-    {% assign sorted_projects = site.projects | sort: "importance" %}
-    <!-- Generate cards for each project -->
-      <div class="container">
-        <div class="row">
-        {% for project in sorted_projects %}
-          {% include projects_horizontal.html %}
-        {% endfor %}
-        </div>
-      </div>
-<!--
-<!-- Display projects without categories 
+<!-- Display projects without categories--> 
   {%- assign sorted_projects = site.projects | sort: "importance" -%}
-  <!-- Generate cards for each project 
+  <!-- Generate cards for each project -->
   {% if page.horizontal -%}
   <div class="container">
     <div class="row row-cols-2">
@@ -63,10 +52,10 @@ horizontal: true
   <div class="container">
     <div class="row row-cols-1">
     {%- for project in sorted_projects -%}
-      {% include projects.html %}
+      {% include projects_horizontal.html %}
     {%- endfor %}
     </div>
-  </div> -->
+  </div>
   {%- endif -%}
 {%- endif -%}
 </div>
