@@ -27,7 +27,7 @@ Addresing these challenges we built the closed-loop cyber-physical system for pr
 The initial step in building the network was characterizing the communication from inside the body of the animal to the outside. We conducted the seminal study for identifying the optimal freqeuncy for RF-based wireless communication. The setup is shown in the figure below. The full paper is available <a href="https://ieeexplore.ieee.org/abstract/document/9629743"> here</a>. 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/introduction_Figure.jpg" title="layout for experiments on RF comm" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Introduction_Figure.jpg" title="layout for experiments on RF comm" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
