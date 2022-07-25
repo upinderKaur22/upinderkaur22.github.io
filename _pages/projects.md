@@ -5,7 +5,7 @@ permalink: /research/
 description: Completed and continuing projects
 nav: true
 display_categories: 
-horizontal: false
+horizontal: true
 ---
 
 <!-- pages/projects.md -->
