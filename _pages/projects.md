@@ -4,7 +4,7 @@ title: research
 permalink: /research/
 description: Completed and continuing projects
 nav: true
-display_categories: 
+display_categories: [Current Work]
 horizontal: true
 ---
 
