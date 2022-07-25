@@ -26,10 +26,12 @@ horizontal: false
     </div>
   </div>
   {%- else -%}
-  <div class="grid">
-    {%- for project in sorted_projects -%}
-      {% include projects.html %}
+  <div class="container">
+      <div class="row row-cols-2">
+      {%- for project in sorted_projects -%}
+        {% include projects.html %}
     {%- endfor %}
+    </div>
   </div>
   {%- endif -%}
   {% endfor %}
