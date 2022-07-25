@@ -9,4 +9,10 @@ children:
     - title: divider
     - title: projects
       permalink: /projects/
+    - title: divider
+    - title: awards
+      permalink: /awards/
+    - title: divider
+    - title: mentoring
+      permalink: /mentoring/
 ---
