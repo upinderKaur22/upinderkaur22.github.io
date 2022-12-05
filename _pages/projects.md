@@ -4,6 +4,7 @@ title: research
 permalink: /research/
 description: Completed and continuing projects
 nav: true
+nav_order: 2
 display_categories:
 horizontal: false
 ---
