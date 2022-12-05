@@ -6,6 +6,7 @@ description: publications by categories in reversed chronological order.
 years: [2022,2021,2020]
 type: [Book Chapters,Conferences and Workshops,Journals]
 nav: true
+nav_order: 1
 ---
 <!-- _pages/publications.md -->
 <div class="publications">
