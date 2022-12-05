@@ -1,4 +1,3 @@
-open source contributions
 ---
 layout: page
 permalink: /opensource/
