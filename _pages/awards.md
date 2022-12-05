@@ -8,12 +8,12 @@ nav_order: 4
 ---
 
 <ul> 
-  <li> {\bf Best Paper Award, }{\it AgSys, SenSys} \hfill2022</li>
-    <li> {\bf Dean's Travel Grant, }{\it Purdue University} \hfill2022</li>
-    <li> {\bf Purdue Graduate Student Travel Grant, }{\it Purdue University} \hfill2022</li>
-    <li> {\bf Chancellor's Gold Medal, }{\it IGDTUW} \hfill2017</li>
-    <li> {\bf Vice Chancellor's Gold Medal, }{\it IGDTUW} \hfill 2017</li>
-    <li> {\bf Exemplary Performance Silver Plaque, }{\it IGDTUW}\hfill 2017</li>
-    <li> {\bf Ministry of Human Resource Development (MHRD) Scholarship}\hfill2015-2017</li>
-  <li> {\bf Academic Bronze Medal, }{\it Amity University} \hfill2015</li>
+    <li> Best Paper Award,*AgSys, SenSys,2022*</li>
+    <li> Dean's Travel Grant,*Purdue University,2022*</li>
+    <li> Purdue Graduate Student Travel Grant,*Purdue University,2022*</li>
+    <li> Chancellor's Gold Medal,*IGDTUW,2017*</li>
+    <li> Vice Chancellor's Gold Medal,*IGDTUW,2017*</li>
+    <li> Exemplary Performance Silver Plaque,*IGDTUW, 2017*</li>
+    <li> Ministry of Human Resource Development (MHRD) Scholarship,*2015-2017*</li>
+  <li> Academic Bronze Medal,*Amity University,2015*</li>
 </ul>
