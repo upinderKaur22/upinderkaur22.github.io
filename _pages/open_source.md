@@ -12,7 +12,7 @@ A unique dataset of robot malware and good software.
 
 <div class="repo p-2 text-center">
   <a href="https://purr.purdue.edu/publications/3860/about?v=1">
-    <img class="repo-img-light w-100" src="https://github-readme-stats.vercel.app/api/pin/?username=upinderKaur22&repo=CPS_dataset&theme={{ site.repo_theme_light }}">
+    <img class="repo-img-light w-100" src="https://github-readme-stats.vercel.app/api/pin/?username=upinderKaur22&repo=CPS_malware&theme={{ site.repo_theme_light }}">
   </a>
 </div>
 
