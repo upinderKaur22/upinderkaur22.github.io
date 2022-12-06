@@ -8,7 +8,7 @@ nav_order: 4
 ---
 
 <ul> 
-    <li> Best Paper Award, *AgSys, SenSys,2022* </li>
+    <li> Best Paper Award, _AgSys,SenSys,2022_ </li>
     <li> Dean's Travel Grant, *Purdue University,2022* </li>
     <li> Purdue Graduate Student Travel Grant, *Purdue University,2022* </li>
     <li> Chancellor's Gold Medal, *IGDTUW,2017*</li>
