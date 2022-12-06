@@ -1,16 +1,17 @@
 ---
 layout: page
 permalink: /opensource/
-title: Open Source Contributions
+title: open source
 description: Datasets, repositories, and other contributions to open source projects.
 nav: true
 nav_order: 3
 ---
-##Datasets
+## Datasets
 
-#RoboMal Dataset
+# RoboMal Dataset
 
-#Bovine FEM and Physiological Model Dataset
+# Bovine FEM and Physiological Model Dataset
 
-#DESK Dataset
+# DESK Dataset
+
 
