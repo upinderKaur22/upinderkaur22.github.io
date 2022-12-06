@@ -20,7 +20,7 @@ A unique dataset of robot malware and good software.
 {% assign repo_url =  "https://github.com/SparcLab/Bovine-FEM-Model" %}
 <div class="repo p-2 text-center">
   <a href="https://github.com/SparcLab/Bovine-FEM-Model">
-    <img class="repo-img-light w-100" src="https://github.com/SparcLab/Bovine-FEM-Model">
+    <img class="repo-img-light w-100" src="https://github-readme-stats.vercel.app/api/pin/?username=SparcLab&repo=Bovine-FEM-Model&theme={{ site.repo_theme_light }}">
   </a>
 </div>
 
