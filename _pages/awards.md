@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /awards/
-title: Awards
+title: awards
 description: The awards I have received so far.
 nav: true
 nav_order: 4
