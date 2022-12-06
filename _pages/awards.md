@@ -25,4 +25,4 @@ I was invited to the Sci-Vibes Podcast by Microsoft Research where I talked abou
 
 
 ## InnovatED Magazine
-A short summary of my research was selected to be featured in the InnovtED magazine (2023 Spring Edition). 
+A short summary of my research was selected to be featured in the InnovatED magazine (2023 Spring Edition). 
